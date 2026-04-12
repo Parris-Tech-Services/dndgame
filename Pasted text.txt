@@ -1,0 +1,2982 @@
+     ]
+   827       },
+   828       final_appeal: {
+   829         speech: "*stops* ...I've walked too far down this road to turn bac
+       k. The dragon would kill me. I have no other path. *raises weapon, but wit
+       h less conviction* Forgive me.",
+   830         choices: [
+   831           { text: "Fight.", next: "fight", triggerCombat: "vexira_act3" },
+   832           { text: "[CHA 18] There is always another path.", next: "appeal"
+       , skillCheck: {skill:"cha",dc:18} }
+   833         ]
+   834       },
+   835       appeal: {
+   836         speech: "...*long silence* I... *the violet light dims slightly* Y
+       ou speak truth. I started this because I believed in something. Not... not
+        this. *her hands lower* But it's too late. The dragon will kill me whethe
+       r I complete the ritual or not now. I just wanted to matter.",
+   837         choices: [
+   838           { text: "Then help me face the dragon. Together.", next: "vexira
+       _ally", morality: 8 },
+   839           { text: "Tell me how to break the ritual.", next: "ritual_break_
+       info" }
+   840         ]
+   841       },
+   842       vexira_ally: {
+   843         speech: "*looks up with something fragile in her eyes* Together? I
+       've killed your kind before. ...But perhaps that's exactly the point. Very
+        well. I know Szartharrax's weakness — the pact stone is embedded in his c
+       hest scales, left side. Destroy it and his spell power fractures. He'll be
+        vulnerable. I can distract him. *grimly* Don't let my sacrifice be wasted
+       .",
+   844         choices: [
+   845           { text: "Your sacrifice won't be forgotten.", next: "farewell",
+       questUpdate: "vexira_allied", morality: 5 }
+   846         ]
+   847       },
+   848       ritual_break_info: {
+   849         speech: "The pact stone is in the dragon's chamber — a black cryst
+       al embedded in a stone pedestal. Destroy it. The binding will unravel and
+       the children will be freed. Szartharrax will be furious, but weakened. It
+       may be your only advantage.",
+   850         choices: [
+   851           { text: "Then it's time to end this.", next: "fight", triggerCom
+       bat: "vexira_act3" }
+   852         ]
+   853       },
+   854       her_motivation: {
+   855         speech: "Power? Yes. But more than that — purpose. I was a beggar
+       child in Baldur's Gate. Nothing. Less than nothing. Szartharrax offered me
+        power to reshape the world. To build something lasting. I took it. *simpl
+       y* Wouldn't you?",
+   856         choices: [
+   857           { text: "At the cost of children's souls? No.", next: "children_
+       challenge", morality: 3 },
+   858           { text: "Perhaps. But I'm stopping you anyway.", next: "fight",
+       triggerCombat: "vexira_act3" }
+   859         ]
+   860       },
+   861       pact_stone_info: {
+   862         speech: "The pact stone? *smiles* It's in Szartharrax's personal c
+       hamber, deep in the Cloakwood. You'd have to get past me first. *raises st
+       aff* And you haven't managed that yet.",
+   863         choices: [
+   864           { text: "Then let's settle this now.", next: "fight", triggerCom
+       bat: "vexira_act3" }
+   865         ]
+   866       },
+   867       fight: {
+   868         speech: "*Voice rising with dark power* End of words, hero. Let's
+       see if your steel is sharper than my magic.",
+   869         choices: []
+   870       },
+   871       final_boss_start: {
+   872         speech: "*at the dragon's side, but looks... diminished* You follo
+       wed us here. I hoped you wouldn't. *glances at Szartharrax* My lord... the
+        hero has arrived. *to you, quietly* I'm sorry.",
+   873         choices: [
+   874           { text: "Stand down, Vexira. It doesn't have to end this way.",
+       next: "final_last_chance", morality: 3 },
+   875           { text: "Step aside or fall with the dragon.", next: "final_figh
+       t" }
+   876         ]
+   877       },
+   878       final_last_chance: {
+   879         speech: "*conflict clear on her face* I... *looks at the dragon* S
+       zartharrax. I cannot. *turns to face the dragon* I WILL NOT. *the dragon r
+       oars and the fight begins*",
+   880         choices: [],
+   881         triggerCombat: "final_boss",
+   882         vexiraDefects: true
+   883       },
+   884       final_fight: {
+   885         speech: "*steels herself* Then we all die here together.",
+   886         choices: [],
+   887         triggerCombat: "final_boss"
+   888       },
+   889       farewell: {
+   890         speech: "...",
+   891         choices: []
+   892       }
+   893     }
+   894   },
+   895   szartharrax: {
+   896     name: "Szartharrax", emoji: "🐉", title: "Young Black Dragon",
+   897     portrait: "🐉", faction: null,
+   898     states: {
+   899       first_encounter: {
+   900         speech: "*enormous black scales gleam in the darkness, acid vapor
+       curling from iron-black nostrils* So. The insects have arrived. You killed
+        my servants. You disrupted my ritual. *amusement in the deep resonant voi
+       ce* Bold. Almost worthy of my regard. Almost.",
+   901         choices: [
+   902           { text: "Your ritual ends here, dragon.", next: "defiant_approac
+       h" },
+   903           { text: "I'd rather talk than fight.", next: "parley_approach" }
+       ,
+   904           { text: "[STR 16] I've faced worse than you.", next: "intimidate
+       _attempt", skillCheck: {skill:"str",dc:19} },
+   905           { text: "[CHA 18 + Morality 70+] Your deal with Vexira was flawe
+       d from the start.", next: "clever_approach", skillCheck: {skill:"cha",dc:1
+       8}, moralityCheck: 70 }
+   906         ]
+   907       },
+   908       defiant_approach: {
+   909         speech: "*head lowers, eyes glowing with acid-green light* Ends he
+       re. How... definitive. Very well. You have five seconds to reconsider. *pa
+       uses* Four. Three.",
+   910         choices: [
+   911           { text: "I'm not reconsidering. FIGHT!", next: "fight_initiate"
+       },
+   912           { text: "[CHA] Wait — hear me out.", next: "parley_approach" }
+   913         ]
+   914       },
+   915       parley_approach: {
+   916         speech: "*long pause, studying you like a puzzle* Talk. A rare req
+       uest. Very well — you have until I grow bored, which has historically been
+        quite soon. Speak your piece, small thing. I am... listening.",
+   917         choices: [
+   918           { text: "This ritual will bring armies to Neverwinter. Not peace
+       .", next: "power_argument" },
+   919           { text: "Vexira was using you, not serving you.", next: "vexira_
+       argument" },
+   920           { text: "What do you actually want from this deal?", next: "want
+       s_question" }
+   921         ]
+   922       },
+   923       power_argument: {
+   924         speech: "*narrows great eyes* Armies. *considering* The Lords' All
+       iance would respond. Waterdeep. Perhaps even Silverymoon. *slowly* Yes. I
+       had... not fully modeled that consequence. My ritual would paint a very vi
+       sible target on this city. *dangerously quiet* Interesting point. Continue
+       .",
+   925         choices: [
+   926           { text: "Fly north. The tundra has no armies.", next: "negotiate
+       _flight", morality: 0 },
+   927           { text: "Help us destroy the ritual and I'll keep your secret.",
+        next: "secret_deal", morality: -5 }
+   928         ]
+   929       },
+   930       vexira_argument: {
+   931         speech: "Using me? *a rumble that might be laughter* All deals are
+        mutual exploitation. I am not naive. But... *thoughtful* she did conceal
+       certain elements of her plan from me. The scale of the backlash. The atten
+       tion it would draw. Perhaps 'using' is accurate. *a long silence* What do
+       you suggest instead?",
+   932         choices: [
+   933           { text: "Walk away. Let us handle Vexira.", next: "negotiate_wit
+       hdrawal" },
+   934           { text: "Fly somewhere less... populated.", next: "negotiate_fli
+       ght" }
+   935         ]
+   936       },
+   937       wants_question: {
+   938         speech: "What do I want? *genuinely considers* Power, obviously. B
+       ut more specifically — I want a domain. Territory. Acknowledgment from les
+       ser beings that I exist and that I am not to be trifled with. A city under
+        a dragon's thumb provides all three... but so would a mountain range with
+        no witnesses to offend.",
+   939         choices: [
+   940           { text: "The Spine of the World is yours for the taking.", next:
+        "negotiate_flight", morality: 3 },
+   941           { text: "Stay and be acknowledged — as Neverwinter's protector,
+       not its tyrant.", next: "protector_deal", morality: 5, questCheck: "nevere
+       mber_redeemed" }
+   942         ]
+   943       },
+   944       clever_approach: {
+   945         speech: "*very long silence* ...You know about that. The backlash
+       calculations. *slowly* Vexira told me the ritual would be seamless. Clean.
+        *the green light in his eyes dims slightly* She did not mention the soul-
+       fracture event at completion. The one that would draw attention from every
+        major power within five hundred miles. You are... better informed than I
+       expected.",
+   946         choices: [
+   947           { text: "Her ambition blinded her. She used you.", next: "vexira
+       _argument" },
+   948           { text: "We both want this city to survive. Work with us.", next
+       : "protector_deal", morality: 5 }
+   949         ]
+   950       },
+   951       intimidate_attempt: {
+   952         speech: "*blink* Truly? *the acid breath barely misses you* No. Bu
+       t I respect the audacity. Fine — you have earned exactly thirty seconds of
+        my genuine attention before I finish what the breath started. Make it wor
+       thwhile.",
+   953         choices: [
+   954           { text: "Your ritual will bring armies. Think about it.", next:
+       "power_argument" },
+   955           { text: "I'll burn that stone before you complete anything.", ne
+       xt: "fight_initiate" }
+   956         ]
+   957       },
+   958       intimidate_fail: {
+   959         speech: "*a sound like grinding stone — dragon laughter* You are s
+       mall and brave and very, very foolish. *readies acid breath* I admire all
+       three qualities. I simply won't let them save you.",
+   960         choices: [
+   961           { text: "FIGHT!", next: "fight_initiate" }
+   962         ]
+   963       },
+   964       negotiate_flight: {
+   965         speech: "The north. *considers* Cold. Remote. Prey that doesn't or
+       ganize against you. *slowly stands to full height* You make... a surprisin
+       gly compelling argument for someone who walked in here expecting to die. V
+       ery well. I accept. I will take my leave of this southern foolishness. *wa
+       rning* Do not make me regret this generosity.",
+   966         choices: [
+   967           { text: "You won't regret it.", next: "farewell", questUpdate: "
+       dragon_fled", morality: 5, ending: "dragon_fled" },
+   968           { text: "I hope we never meet again.", next: "farewell", questUp
+       date: "dragon_fled", ending: "dragon_fled" }
+   969         ]
+   970       },
+   971       negotiate_withdrawal: {
+   972         speech: "*long consideration* Vexira... has become a liability. He
+       r ambition outstripped her usefulness. *the acid vapor thickens* Very well
+       . I withdraw my support. Deal with her as you see fit. *turns* But know th
+       is: I will remember your face. Should you ever venture north... I will be
+       watching.",
+   973         choices: [
+   974           { text: "Fair enough.", next: "farewell", questUpdate: "dragon_n
+       eutral", ending: "dragon_neutral" }
+   975         ]
+   976       },
+   977       protector_deal: {
+   978         speech: "*silence stretches for a very long time* ...A protector.
+       Not a tyrant. *considers* Neverwinter's history is full of so-called prote
+       ctors who left the city burning behind them. *long pause* I could do bette
+       r. Genuinely. *finally* There are... terms I would require.",
+   979         choices: [
+   980           { text: "Name them.", next: "protector_terms", morality: 3 }
+   981         ]
+   982       },
+   983       protector_terms: {
+   984         speech: "Annual tribute of gold and livestock. Acknowledgment of m
+       y territory in the Cloakwood. No armies within three miles of my lair. And
+       ... *surprising gentleness* the children are freed. Unharmed. I want no in
+       nocent blood on my scales from Vexira's foolishness.",
+   985         choices: [
+   986           { text: "Agreed. Neverwinter will honor these terms.", next: "fa
+       rewell", questUpdate: "dragon_protector", morality: 8, ending: "dragon_all
+       y" },
+   987           { text: "I can't promise for the whole city.", next: "negotiate_
+       withdrawal" }
+   988         ]
+   989       },
+   990       secret_deal: {
+   991         speech: "*dangerous pause* You would cover for me. Hide what happe
+       ned here. In exchange for... what, precisely? You don't get something for
+       nothing with a dragon.",
+   992         choices: [
+   993           { text: "A city that doesn't know to fear you is safer for you."
+       , next: "negotiate_withdrawal", morality: -8 },
+   994           { text: "I need the ritual ended. You need to not be hunted.", n
+       ext: "negotiate_withdrawal", morality: -5 }
+   995         ]
+   996       },
+   997       fight_initiate: {
+   998         speech: "*the great jaws open, acid gathering like a dark star* As
+        you wish. CHILDREN OF NEVERWINTER, PRAY!",
+   999         choices: [],
+  1000         triggerCombat: "final_boss"
+  1001       },
+  1002       farewell: {
+  1003         speech: "...",
+  1004         choices: []
+  1005       }
+  1006     }
+  1007   }
+  1008 };
+  1009
+  1010 // Quest definitions
+  1011 const QUESTS_DB = {
+  1012   main_quest: {
+  1013     id: "main_quest", name: "Chronicles of the Sword Coast", type: "main",
+  1014     stages: [
+  1015       { id: "arrival", desc: "Arrive in Neverwinter and get your bearings.
+       " },
+  1016       { id: "investigation", desc: "Investigate the strange illness affect
+       ing the children of Blacklake." },
+  1017       { id: "ruins", desc: "Find the Zhentarim base in the eastern ruins."
+        },
+  1018       { id: "betrayal_revealed", desc: "Confront Lord Neverember about his
+        involvement." },
+  1019       { id: "final_assault", desc: "Assault the Dragon's Lair and stop Vex
+       ira's ritual." }
+  1020     ],
+  1021     currentStage: 0
+  1022   },
+  1023   sick_children: {
+  1024     id: "sick_children", name: "The Binding Curse", type: "side",
+  1025     stages: [
+  1026       { id: "learn_about", desc: "Learn more about the children's mysterio
+       us illness." },
+  1027       { id: "find_miri", desc: "Find Miri the healer in the Cloakwood." },
+  1028       { id: "get_ingredients", desc: "Gather Nightshade Bloom and Dragon S
+       cale for Miri." },
+  1029       { id: "make_draught", desc: "Have Miri craft the protective draught.
+       " },
+  1030       { id: "save_children", desc: "Administer the draught or stop the rit
+       ual." }
+  1031     ],
+  1032     currentStage: 0
+  1033   },
+  1034   tormund_rescue: {
+  1035     id: "tormund_rescue", name: "A Soldier's Debt", type: "side",
+  1036     stages: [
+  1037       { id: "find_tormund", desc: "Find the veteran soldier Tormund in the
+        ruins district." },
+  1038       { id: "rescue", desc: "Help Tormund fight off the Zhentarim ambush."
+        },
+  1039       { id: "recruit", desc: "Convince Tormund to join your cause." }
+  1040     ],
+  1041     currentStage: 0
+  1042   }
+  1043 };
+  1044
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+ Do you want to create swordcoast_part1.js?
+ > 1. Yes
+   2. Yes, allow all edits in this directory/ during this session (shift+tab)
+   3. No
+
+ Esc to cancel · Tab to amend
+
+╭─── Claude Code v2.1.70 ────────────────────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting started              │
+│                Welcome back Joshua!                │ Run /init to create a CLAUDE.md file… │
+│                                                    │ ───────────────────────────────────── │
+│                                                    │ Recent activity                       │
+│                       ▐▛███▜▌                      │ No recent activity                    │
+│                      ▝▜█████▛▘                     │                                       │
+│                        ▘▘ ▝▝                       │                                       │
+│  Sonnet 4.6 · Claude Pro · jar32798@gmail.com's    │                                       │
+│  Organization                                      │                                       │
+│ C:\Users\joshu_w0zb8cp\OneDrive - Dubbo Christian… │                                       │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+
+  ✻ Voice mode is now available · /voice to enable
+
+> hello
+
+● Hey. What you need?
+
+> look for DNDGAME.txt
+
+● Searched for 1 pattern (ctrl+o to expand)
+
+● Timeout — too many files to scan from root. Give me more specific folder to search in, or
+  know approximate location?
+
+✻ Worked for 31s
+
+> It is here C:\DNDGAME.txt
+
+● Read 1 file (ctrl+o to expand)
+
+● Found it. Partial DND 5e game built as single HTML file — "Chronicles of the Sword Coast."
+
+  File notes:
+  - Has CSS, character creation, combat engine, spells DB, NPC/quest data, dialogue trees for
+  4 NPCs
+  - Missing: Whisper, Neverember, Vexira, Tormund, Miri NPCs; location encounters; crafting
+  system; final boss
+
+  What you want to do with it?
+
+> make it playable
+
+● Need to read full file first.
+
+● Read 1 file (ctrl+o to expand)
+
+● File is 294 lines, cut off mid-tag. Need to build the complete game from scratch using the
+  existing CSS. Writing full swordcoast.html now — this is large.
+
+● Agent(Write complete DND browser game HTML)
+  ⎿  Write(C:\swordcoast_part1.js)
+     ctrl+b to run in background
+
+──────────────────────────────────────────────────────────────────────────────────────────────
+ Create file
+ ..\..\..\..\..\swordcoast_part1.js
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+     1 // PART 1: Game Data - Races, Classes, Backgrounds, Items, Spells, Enemies
+     2 const RACES = {
+     3   human: { name: "Human", emoji: "👤", desc: "Versatile and ambitious, humans adapt
+       to any role.", bonuses: {str:1,dex:1,con:1,int:1,wis:1,cha:1}, traits: "+1 to all ab
+       ility scores" },
+     4   elf: { name: "Elf", emoji: "🧝", desc: "Graceful and long-lived, elves excel in ma
+       gic and archery.", bonuses: {dex:2,int:1}, traits: "+2 DEX, +1 INT, Darkvision, Tran
+       ce" },
+     5   dwarf: { name: "Dwarf", emoji: "⛏️", desc: "Hardy and stubborn, dwarves are master
+       s of craft and stone.", bonuses: {con:2,wis:1}, traits: "+2 CON, +1 WIS, Stonecunnin
+       g, Poison Resistance" },
+     6   halfling: { name: "Halfling", emoji: "🍀", desc: "Small but lucky, halflings find
+       fortune everywhere they go.", bonuses: {dex:2,cha:1}, traits: "+2 DEX, +1 CHA, Lucky
+       , Brave" },
+     7   tiefling: { name: "Tiefling", emoji: "😈", desc: "Born of infernal heritage, tiefl
+       ings bear both gifts and burdens.", bonuses: {cha:2,int:1}, traits: "+2 CHA, +1 INT,
+        Fire Resistance, Infernal Legacy" }
+     8 };
+     9
+    10 const CLASSES = {
+    11   fighter: {
+    12     name: "Fighter", emoji: "⚔️", hitDie: 10,
+    13     desc: "Masters of martial combat, fighters are versatile warriors capable of gre
+       at deeds.",
+    14     traits: "Extra Attack, Action Surge, Second Wind",
+    15     primaryStat: "str",
+    16     armorBonus: 0,
+    17     spellcaster: false,
+    18     startingItems: [
+    19       {id:"longsword",qty:1},{id:"chain_mail",qty:1},{id:"shield",qty:1},{id:"health
+       _potion",qty:2}
+    20     ],
+    21     skills: ["Athletics","Intimidation"]
+    22   },
+    23   wizard: {
+    24     name: "Wizard", emoji: "🔮", hitDie: 6,
+    25     desc: "Scholars of arcane magic, wizards bend reality through careful study and
+       willpower.",
+    26     traits: "Spellcasting, Arcane Recovery, Spell Mastery",
+    27     primaryStat: "int",
+    28     armorBonus: 0,
+    29     spellcaster: true,
+    30     spellcastingAbility: "int",
+    31     startingItems: [
+    32       {id:"quarterstaff",qty:1},{id:"spellbook",qty:1},{id:"arcane_focus",qty:1},{id
+       :"health_potion",qty:3},{id:"scroll_magic_missile",qty:1}
+    33     ],
+    34     skills: ["Arcana","History"],
+    35     startingSpells: ["fire_bolt","mage_hand","magic_missile","shield","burning_hands
+       "]
+    36   },
+    37   rogue: {
+    38     name: "Rogue", emoji: "🗡️", hitDie: 8,
+    39     desc: "Cunning and quick, rogues use guile, stealth, and precision strikes to ov
+       ercome foes.",
+    40     traits: "Sneak Attack 2d6, Cunning Action, Uncanny Dodge",
+    41     primaryStat: "dex",
+    42     armorBonus: 0,
+    43     spellcaster: false,
+    44     startingItems: [
+    45       {id:"shortsword",qty:1},{id:"dagger",qty:2},{id:"leather_armor",qty:1},{id:"he
+       alth_potion",qty:2},{id:"thieves_tools",qty:1}
+    46     ],
+    47     skills: ["Stealth","Deception"]
+    48   },
+    49   cleric: {
+    50     name: "Cleric", emoji: "✨", hitDie: 8,
+    51     desc: "Divine servants blessed with healing and protective magic, clerics stand
+       between life and death.",
+    52     traits: "Spellcasting, Channel Divinity, Divine Intervention",
+    53     primaryStat: "wis",
+    54     armorBonus: 0,
+    55     spellcaster: true,
+    56     spellcastingAbility: "wis",
+    57     startingItems: [
+    58       {id:"mace",qty:1},{id:"chain_mail",qty:1},{id:"holy_symbol",qty:1},{id:"health
+       _potion",qty:4}
+    59     ],
+    60     skills: ["Medicine","Religion"],
+    61     startingSpells: ["sacred_flame","guidance","cure_wounds","bless","guiding_bolt"]
+    62   },
+    63   ranger: {
+    64     name: "Ranger", emoji: "🏹", hitDie: 10,
+    65     desc: "Skilled trackers and hunters, rangers defend the wilderness and those who
+        travel through it.",
+    66     traits: "Favored Enemy, Natural Explorer, Extra Attack at 5",
+    67     primaryStat: "dex",
+    68     armorBonus: 0,
+    69     spellcaster: false,
+    70     startingItems: [
+    71       {id:"longbow",qty:1},{id:"shortsword",qty:1},{id:"leather_armor",qty:1},{id:"h
+       ealth_potion",qty:2},{id:"arrows",qty:20}
+    72     ],
+    73     skills: ["Survival","Perception"]
+    74   }
+    75 };
+    76
+    77 const BACKGROUNDS = {
+    78   soldier: { name: "Soldier", emoji: "🎖️", desc: "You served in a military force, le
+       arning discipline and combat.", bonus: "Athletics, Intimidation proficiency. +50 gol
+       d.", gold: 50, skills: ["Athletics","Intimidation"] },
+    79   scholar: { name: "Scholar", emoji: "📚", desc: "Years of study gave you vast knowl
+       edge and keen insight.", bonus: "Arcana, History proficiency. Spellscroll of your ch
+       oice.", gold: 30, skills: ["Arcana","History"] },
+    80   criminal: { name: "Criminal", emoji: "🎲", desc: "A life outside the law taught yo
+       u to survive by your wits.", bonus: "Stealth, Deception proficiency. Thieves Tools."
+       , gold: 40, skills: ["Stealth","Deception"] },
+    81   folk_hero: { name: "Folk Hero", emoji: "🌾", desc: "You rose from humble origins t
+       o become a champion of the common people.", bonus: "Animal Handling, Survival profic
+       iency. +tool.", gold: 25, skills: ["AnimalHandling","Survival"] },
+    82   noble: { name: "Noble", emoji: "👑", desc: "Born to privilege, you learned politic
+       s and leadership at a young age.", bonus: "Persuasion, History proficiency. Noble ou
+       tfit.", gold: 75, skills: ["Persuasion","History"] }
+    83 };
+    84
+    85 const ITEMS_DB = {
+    86   // Weapons
+    87   longsword: { name: "Longsword", type: "weapon", rarity: "common", damage: "1d8", d
+       amageType: "slashing", statBonus: "str", desc: "A well-balanced blade favored by fig
+       hters everywhere.", value: 15, weight: 3 },
+    88   shortsword: { name: "Shortsword", type: "weapon", rarity: "common", damage: "1d6",
+        damageType: "piercing", statBonus: "dex", desc: "A nimble blade suited for quick st
+       rikes.", value: 10, weight: 2 },
+    89   dagger: { name: "Dagger", type: "weapon", rarity: "common", damage: "1d4", damageT
+       ype: "piercing", statBonus: "dex", desc: "A small blade, useful in close quarters.",
+        value: 2, weight: 1 },
+    90   quarterstaff: { name: "Quarterstaff", type: "weapon", rarity: "common", damage: "1
+       d6", damageType: "bludgeoning", statBonus: "str", desc: "A sturdy wooden staff, favo
+       red by spellcasters.", value: 2, weight: 4 },
+    91   mace: { name: "Mace", type: "weapon", rarity: "common", damage: "1d6", damageType:
+        "bludgeoning", statBonus: "str", desc: "A weighted club reinforced with metal flang
+       es.", value: 5, weight: 4 },
+    92   longbow: { name: "Longbow", type: "weapon", rarity: "common", damage: "1d8", damag
+       eType: "piercing", statBonus: "dex", desc: "A powerful ranged weapon requiring stren
+       gth and skill.", value: 50, weight: 2, ranged: true },
+    93   sword_of_dragon_slaying: { name: "Sword of Dragon Slaying", type: "weapon", rarity
+       : "rare", damage: "1d8", damageType: "slashing", statBonus: "str", bonusToHit: 3, dr
+       agonDamage: "3d6", desc: "Forged with dragonbane steel. Deals +3 to hit and +3d6 dam
+       age against dragons.", value: 500, weight: 3 },
+    94   // Armor
+    95   chain_mail: { name: "Chain Mail", type: "armor", rarity: "common", ac: 16, desc: "
+       Interlocked metal rings providing solid protection.", value: 75, weight: 55, stealth
+       Disadv: true },
+    96   leather_armor: { name: "Leather Armor", type: "armor", rarity: "common", ac: 11, d
+       exBonus: true, desc: "Lightweight armor made from cured leather.", value: 10, weight
+       : 10 },
+    97   shield: { name: "Shield", type: "shield", rarity: "common", acBonus: 2, desc: "A s
+       turdy wooden shield reinforced with iron.", value: 10, weight: 6 },
+    98   ring_of_protection: { name: "Ring of Protection", type: "ring", rarity: "uncommon"
+       , acBonus: 1, saveBonus: 1, desc: "An enchanted ring that subtly deflects attacks an
+       d harmful magic.", value: 150, weight: 0 },
+    99   cloak_of_elvenkind: { name: "Cloak of Elvenkind", type: "cloak", rarity: "uncommon
+       ", stealthAdvantage: true, desc: "This fine cloak blends with your surroundings, gra
+       nting advantage on Stealth checks.", value: 200, weight: 1 },
+   100   // Consumables
+   101   health_potion: { name: "Health Potion", type: "consumable", rarity: "common", heal
+       : "2d4+2", desc: "A vial of crimson liquid that restores 2d4+2 hit points.", value:
+       50, weight: 0.5 },
+   102   elixir_of_health: { name: "Elixir of Health", type: "consumable", rarity: "uncommo
+       n", heal: "3d4+3", cureConditions: true, desc: "A powerful elixir that heals 3d4+3 H
+       P and cures all conditions.", value: 120, weight: 0.5 },
+   103   greater_healing_draught: { name: "Greater Healing Draught", type: "consumable", ra
+       rity: "uncommon", heal: "4d4+4", desc: "A masterwork healing potion crafted by a ski
+       lled healer. Restores 4d4+4 HP.", value: 200, weight: 0.5 },
+   104   draught_of_dragon_resistance: { name: "Draught of Dragon Resistance", type: "consu
+       mable", rarity: "uncommon", dragonResistance: true, desc: "Grants resistance to one
+       damage type for 3 combat encounters.", value: 300, weight: 0.5 },
+   105   // Special
+   106   spellbook: { name: "Spellbook", type: "spellbook", rarity: "common", desc: "Your p
+       ersonal grimoire containing arcane formulae.", value: 50, weight: 3 },
+   107   arcane_focus: { name: "Arcane Focus", type: "focus", rarity: "common", desc: "A cr
+       ystal orb that channels magical energy.", value: 10, weight: 1 },
+   108   holy_symbol: { name: "Holy Symbol", type: "focus", rarity: "common", desc: "A sacr
+       ed emblem of your divine patron.", value: 5, weight: 1 },
+   109   thieves_tools: { name: "Thieves' Tools", type: "tool", rarity: "common", desc: "A
+       set of lock picks, files, and probes for bypassing locks.", value: 25, weight: 1 },
+   110   arrows: { name: "Arrows", type: "ammunition", rarity: "common", desc: "Fletched ar
+       rows for your bow. (20 count)", value: 1, weight: 1 },
+   111   scroll_magic_missile: { name: "Scroll of Magic Missile", type: "scroll", rarity: "
+       common", spellId: "magic_missile", desc: "A scroll inscribed with the Magic Missile
+       spell. Single use.", value: 75, weight: 0 },
+   112   dragon_scale: { name: "Dragon Scale", type: "crafting", rarity: "rare", desc: "A s
+       himmering scale from a young black dragon, warm to the touch.", value: 100, weight:
+       1 },
+   113   nightshade_bloom: { name: "Nightshade Bloom", type: "crafting", rarity: "uncommon"
+       , desc: "A rare flower that blooms only in darkness. Gathered in the Cloakwood.", va
+       lue: 50, weight: 0 },
+   114   neverbember_signet: { name: "Neverember's Signet Ring", type: "key", rarity: "unco
+       mmon", desc: "The lord's seal. Opens doors otherwise barred to common folk.", value:
+        0, weight: 0 },
+   115   zhentarim_documents: { name: "Zhentarim Documents", type: "quest", rarity: "common
+       ", desc: "Coded letters detailing shipments of alchemical ingredients to a cult.", v
+       alue: 0, weight: 0 },
+   116   cultist_key: { name: "Cultist Key", type: "key", rarity: "common", desc: "An iron
+       key taken from a slain Zhentarim agent. Opens the warehouse.", value: 0, weight: 0 }
+   117 };
+   118
+   119 const SPELLS_DB = {
+   120   // Cantrips (level 0)
+   121   fire_bolt: { name: "Fire Bolt", level: 0, school: "Evocation", castingTime: "1 act
+       ion", range: "120 ft", components: "V, S", damage: "1d10", damageType: "fire", savin
+       gThrow: null, attackRoll: true, desc: "Hurl a mote of fire at a creature or object.
+       Make a ranged spell attack.", meta: "Cantrip · Ranged spell attack · 1d10 fire" },
+   122   mage_hand: { name: "Mage Hand", level: 0, school: "Conjuration", castingTime: "1 a
+       ction", range: "30 ft", components: "V, S", damage: null, utility: true, desc: "A sp
+       ectral hand appears to manipulate objects at range.", meta: "Cantrip · Utility · No
+       damage" },
+   123   sacred_flame: { name: "Sacred Flame", level: 0, school: "Evocation", castingTime:
+       "1 action", range: "60 ft", components: "V, S", damage: "1d8", damageType: "radiant"
+       , savingThrow: "dex", saveHalf: false, desc: "Flame-like radiance descends. Target m
+       ust succeed on a DEX save or take damage.", meta: "Cantrip · DEX save · 1d8 radiant"
+        },
+   124   guidance: { name: "Guidance", level: 0, school: "Divination", castingTime: "1 acti
+       on", range: "Touch", components: "V, S", damage: null, utility: true, buff: "1d4", d
+       esc: "Touch a creature. Once before the spell ends, it can roll 1d4 on one ability c
+       heck.", meta: "Cantrip · Buff · +1d4 to one check" },
+   125   // Level 1
+   126   magic_missile: { name: "Magic Missile", level: 1, school: "Evocation", castingTime
+       : "1 action", range: "120 ft", components: "V, S", damage: "1d4+1", damageType: "for
+       ce", missiles: 3, autoHit: true, desc: "Three glowing darts of magical force strike
+       unerringly. Each deals 1d4+1 force damage.", meta: "1st level · Auto-hit · 3×(1d4+1)
+        force" },
+   127   shield: { name: "Shield", level: 1, school: "Abjuration", castingTime: "1 reaction
+       ", range: "Self", components: "V, S", damage: null, reaction: true, acBonus: 5, dura
+       tion: "1 round", desc: "An invisible barrier of magical force appears. +5 AC until s
+       tart of next turn.", meta: "1st level · Reaction · +5 AC for 1 round" },
+   128   burning_hands: { name: "Burning Hands", level: 1, school: "Evocation", castingTime
+       : "1 action", range: "Self (15ft cone)", components: "V, S", damage: "3d6", damageTy
+       pe: "fire", savingThrow: "dex", saveHalf: true, aoe: true, desc: "A thin sheet of fl
+       ames shoots from your fingertips. 15-foot cone, DEX save.", meta: "1st level · DEX s
+       ave · 3d6 fire (AoE cone)" },
+   129   cure_wounds: { name: "Cure Wounds", level: 1, school: "Evocation", castingTime: "1
+        action", range: "Touch", components: "V, S", damage: null, heal: "1d8", healMod: "w
+       is", desc: "Touch a creature to restore 1d8 + WIS modifier hit points.", meta: "1st
+       level · Heal 1d8+WIS · Touch" },
+   130   bless: { name: "Bless", level: 1, school: "Enchantment", castingTime: "1 action",
+       range: "30 ft", components: "V, S, M", buff: "1d4", targets: 3, duration: "1 minute
+       (10 rounds)", desc: "Up to three creatures gain +1d4 to attack rolls and saving thro
+       ws.", meta: "1st level · Buff · +1d4 attacks/saves (3 targets)" },
+   131   guiding_bolt: { name: "Guiding Bolt", level: 1, school: "Evocation", castingTime:
+       "1 action", range: "120 ft", components: "V, S", damage: "4d6", damageType: "radiant
+       ", attackRoll: true, nextAttackAdvantage: true, desc: "A flash of light streaks towa
+       rd a creature. Make a ranged spell attack for 4d6 radiant.", meta: "1st level · Rang
+       ed spell attack · 4d6 radiant" },
+   132   // Level 2
+   133   misty_step: { name: "Misty Step", level: 2, school: "Conjuration", castingTime: "B
+       onus action", range: "Self", components: "V", teleport: 30, desc: "Surrounded by sil
+       ver mist, you teleport up to 30 feet to an unoccupied space you can see.", meta: "2n
+       d level · Bonus action · Teleport 30 ft" },
+   134   invisibility: { name: "Invisibility", level: 2, school: "Illusion", castingTime: "
+       1 action", range: "Touch", components: "V, S, M", buff: "invisible", duration: "1 ho
+       ur", desc: "A creature you touch becomes invisible until the spell ends or it attack
+       s/casts.", meta: "2nd level · Concentration · Invisible" },
+   135   spiritual_weapon: { name: "Spiritual Weapon", level: 2, school: "Evocation", casti
+       ngTime: "Bonus action", range: "60 ft", components: "V, S", damage: "1d8", damageTyp
+       e: "force", healMod: "wis", summon: true, desc: "A floating, spectral weapon attacks
+        enemies. Bonus action to move and attack.", meta: "2nd level · Bonus action · 1d8+W
+       IS force" },
+   136   hold_person: { name: "Hold Person", level: 2, school: "Enchantment", castingTime:
+       "1 action", range: "60 ft", components: "V, S, M", savingThrow: "wis", condition: "p
+       aralyzed", duration: "1 minute", desc: "Choose a humanoid. It must make a WIS save o
+       r be paralyzed.", meta: "2nd level · WIS save · Paralyzed" },
+   137   // Level 3
+   138   fireball: { name: "Fireball", level: 3, school: "Evocation", castingTime: "1 actio
+       n", range: "150 ft", components: "V, S, M", damage: "8d6", damageType: "fire", savin
+       gThrow: "dex", saveHalf: true, aoe: true, radius: "20-ft radius", desc: "A bright st
+       reak erupts into a fiery explosion. 8d6 fire damage in a 20-foot radius, DEX save.",
+        meta: "3rd level · DEX save · 8d6 fire (AoE 20ft)" },
+   139   revivify: { name: "Revivify", level: 3, school: "Necromancy", castingTime: "1 acti
+       on", range: "Touch", components: "V, S, M (diamond 300gp)", revive: true, desc: "Res
+       tore life to a creature dead no longer than 1 minute. It returns to 1 HP.", meta: "3
+       rd level · Revive creature · 1 HP" }
+   140 };
+   141
+   142 const SPELL_SLOTS = {
+   143   1: [2, 0, 0],
+   144   2: [3, 0, 0],
+   145   3: [4, 2, 0],
+   146   4: [4, 3, 0],
+   147   5: [4, 3, 2],
+   148   6: [4, 3, 3]
+   149 };
+   150
+   151 const ENEMIES_DB = {
+   152   rat_swarm: { name: "Rat Swarm", emoji: "🐀", ac: 10, maxHp: 12, damage: "1d4", dam
+       ageType: "piercing", attackBonus: 2, cr: "1/4", xp: 50, desc: "A writhing mass of hu
+       ngry rodents.", abilities: [], loot: [] },
+   153   thug: { name: "Thug", emoji: "💪", ac: 11, maxHp: 20, damage: "1d6+2", damageType:
+        "bludgeoning", attackBonus: 4, cr: "1/2", xp: 100, desc: "A hired muscle with more
+       brawn than brains.", abilities: [], loot: [{item:"health_potion",chance:0.3}] },
+   154   zhentarim_agent: { name: "Zhentarim Agent", emoji: "⚫", ac: 13, maxHp: 28, damage
+       : "1d8+2", damageType: "piercing", attackBonus: 5, cr: "1", xp: 200, desc: "A traine
+       d operative of the Black Network.", abilities: ["multiattack_2"], loot: [{item:"cult
+       ist_key",chance:0.4},{item:"zhentarim_documents",chance:0.25}] },
+   155   cultist: { name: "Cultist", emoji: "🕯️", ac: 12, maxHp: 18, damage: "1d4+1", damag
+       eType: "slashing", attackBonus: 3, cr: "1/8", xp: 25, desc: "A fanatical devotee who
+        has pledged body and soul to dark powers.", abilities: [], loot: [] },
+   156   cult_fanatic: { name: "Cult Fanatic", emoji: "🔮", ac: 13, maxHp: 33, damage: "1d6
+       +2", damageType: "piercing", attackBonus: 4, cr: "2", xp: 450, desc: "A senior culti
+       st who wields dark magic.", abilities: ["spellcast_inflict_wounds"], spellDC: 12, lo
+       ot: [{item:"health_potion",chance:0.4}] },
+   157   bandit_captain: { name: "Bandit Captain", emoji: "🏴",️ac: 15, maxHp: 52, damage:
+       "1d8+3", damageType: "slashing", attackBonus: 6, cr: "2", xp: 450, desc: "A seasoned
+        criminal with tactical cunning and lethal precision.", abilities: ["multiattack_3",
+       "parry"], loot: [{item:"health_potion",chance:0.6},{item:"ring_of_protection",chance
+       :0.1}] },
+   158   zombie: { name: "Zombie", emoji: "🧟", ac: 8, maxHp: 22, damage: "1d6+1", damageTy
+       pe: "bludgeoning", attackBonus: 3, cr: "1/4", xp: 50, desc: "An undead monstrosity a
+       nimated by dark magic.", abilities: ["undead_fortitude"], loot: [] },
+   159   ghoul: { name: "Ghoul", emoji: "👻", ac: 12, maxHp: 36, damage: "2d6+2", damageTyp
+       e: "slashing", attackBonus: 4, cr: "1", xp: 200, desc: "A ravenous undead creature t
+       hat paralyzes its prey.", abilities: ["paralyzing_touch"], loot: [] },
+   160   vexira: { name: "Vexira", emoji: "💀", ac: 15, maxHp: 91, damage: "1d6+4", damageT
+       ype: "fire", attackBonus: 7, cr: "9", xp: 5000, desc: "A fanatical cultist who comma
+       nds the power of the void.", abilities: ["multiattack_2","void_bolt","shield_of_shad
+       ows"], spellDC: 15, isBoss: true, loot: [{item:"dragon_scale",chance:1.0}] },
+   161   szartharrax: { name: "Szartharrax", emoji: "🐉", ac: 18, maxHp: 178, damage: "2d10
+       +5", damageType: "piercing", attackBonus: 9, cr: "14", xp: 11500, desc: "A young bla
+       ck dragon of terrible cunning and corrosive breath.", abilities: ["multiattack_3","a
+       cid_breath"], breathDC: 14, isBoss: true, isDragon: true, loot: [{item:"dragon_scale
+       ",chance:1.0}] }
+   162 };
+   163
+   164 const LEVEL_THRESHOLDS = [0, 300, 900, 2700, 6500, 14000];
+   165
+   166 // NPC dialogue state tracking
+   167 const NPC_DATA = {
+   168   elara: {
+   169     name: "Elara", emoji: "🍺", title: "Innkeeper of the Fallen Star",
+   170     portrait: "🍺", faction: "lords",
+   171     states: {
+   172       initial: {
+   173         speech: "Welcome to the Fallen Star, traveler! You look like you've had a lo
+       ng journey. I'm Elara — I've run this inn for twenty years. Pull up a chair and rest
+        your bones. Though I'll warn you... Neverwinter isn't as peaceful as it used to be.
+       ",
+   174         choices: [
+   175           { text: "What's been happening in Neverwinter?", next: "trouble" },
+   176           { text: "Tell me about the sick children.", next: "sick_children" },
+   177           { text: "I'm looking for work.", next: "work" },
+   178           { text: "Just passing through.", next: "farewell" }
+   179         ]
+   180       },
+   181       trouble: {
+   182         speech: "Trouble, that's what. Three weeks ago, the children in the Blacklak
+       e Ward started falling ill. Strange sickness — high fever, black veins on their skin
+       . The healers are baffled. And then there's the smugglers at the docks. I've heard t
+       hings... dark things about what they're moving through Neverwinter.",
+   183         choices: [
+   184           { text: "Tell me more about the sick children.", next: "sick_children" },
+   185           { text: "Who are the smugglers?", next: "smugglers" },
+   186           { text: "I'll look into it.", next: "quest_accept", questId: "sick_childre
+       n", morality: 5 }
+   187         ]
+   188       },
+   189       sick_children: {
+   190         speech: "Twelve children, all under ten years old. Their parents are despera
+       te — they've tried every healer in the city. The symptoms are unlike any natural dis
+       ease: black lines spreading from the heart, and they whisper in their sleep... in a
+       language nobody recognizes. Miri, a field healer who camps in the Cloakwood, might k
+       now something. But getting to her means braving the forest.",
+   191         choices: [
+   192           { text: "I'll find Miri and get answers.", next: "miri_quest", questId: "f
+       ind_miri", morality: 5 },
+   193           { text: "What reward is offered?", next: "reward" },
+   194           { text: "This sounds too dangerous.", next: "farewell" }
+   195         ]
+   196       },
+   197       miri_quest: {
+   198         speech: "Bless you. Truly. I knew there was something good in you the moment
+        you walked through that door. Miri's camp is in the eastern Cloakwood, near the old
+        standing stones. She knows plants and curses both. If anyone can identify this ailm
+       ent, it's her. Take this purse — it's all I've saved. And please... hurry.",
+   199         choices: [
+   200           { text: "I'll leave immediately.", next: "farewell", giveGold: 30 },
+   201           { text: "Any other advice before I go?", next: "advice" }
+   202         ]
+   203       },
+   204       smugglers: {
+   205         speech: "I've seen men from the docks — rough types with the Black Network b
+       rand. The Zhentarim. They've been moving crates through the harbor at night. Ask Gar
+       rett the spice merchant; he has a stall near the pier. He's terrified of them but he
+       's seen things. Careful though — they have eyes everywhere.",
+   206         choices: [
+   207           { text: "I'll talk to Garrett.", next: "farewell" },
+   208           { text: "Tell me more.", next: "trouble" }
+   209         ]
+   210       },
+   211       work: {
+   212         speech: "Ha! Honest answer. Truth be told, the whole city needs help right n
+       ow. Lord Neverember's posted a bounty on Zhentarim agents — ten gold each. And there
+       's the matter of the sick children. Helping with either would earn you coin, friends
+       , and maybe a warm bed. What do you say?",
+   213         choices: [
+   214           { text: "Tell me about the sick children.", next: "sick_children" },
+   215           { text: "The Zhentarim bounty sounds good.", next: "smugglers" },
+   216           { text: "I'll think about it.", next: "farewell" }
+   217         ]
+   218       },
+   219       reward: {
+   220         speech: "The parents have pooled together fifty gold, and Lord Neverember hi
+       mself has offered an audience if the plague is stopped. An audience with the Lord of
+        Neverwinter — that's worth more than gold to some folk.",
+   221         choices: [
+   222           { text: "I'll do it.", next: "miri_quest", questId: "find_miri", morality:
+        3 },
+   223           { text: "I need more information first.", next: "trouble" }
+   224         ]
+   225       },
+   226       advice: {
+   227         speech: "Keep your wits about you. The Cloakwood isn't just dangerous from t
+       he undead — there are cultist patrols between here and there. And whatever you do, d
+       on't drink the black water. The streams near the ruins run dark these days.",
+   228         choices: [
+   229           { text: "Thank you, Elara.", next: "farewell" }
+   230         ]
+   231       },
+   232       farewell: {
+   233         speech: "Safe travels, friend. The gods watch over brave souls. Come back to
+        me alive — this inn could use more heroes and fewer corpses.",
+   234         choices: []
+   235       }
+   236     }
+   237   },
+   238   garrett: {
+   239     name: "Garrett", emoji: "💰", title: "Spice Merchant",
+   240     portrait: "💰", faction: "lords",
+   241     states: {
+   242       initial: {
+   243         speech: "Please, keep your voice down! I'm just a merchant, I don't want any
+        trouble. Whatever you've heard about me — it isn't true. I sell spices. Just spices
+       . Now please, buy something or move along.",
+   244         choices: [
+   245           { text: "I know about the Zhentarim shipments.", next: "zhentarim_approach
+       " },
+   246           { text: "I'm not here to cause trouble. Tell me what you've seen.", next:
+       "gentle_approach" },
+   247           { text: "[PERSUASION] You're scared. Let me help you.", next: "persuade",
+       skillCheck: {skill:"cha", dc:13} },
+   248           { text: "[COIN] Here's 20 gold for information.", next: "bribe", cost: 20
+       }
+   249         ]
+   250       },
+   251       zhentarim_approach: {
+   252         speech: "Keep your voice down! *looks around frantically* How do you know ab
+       out that? I... I've seen things I shouldn't have. Crates moving at night. Alchemical
+        ingredients — wolf's bane, void salts, black lotus. The kind of things used in dark
+        rituals. But if I tell you more, they'll kill me!",
+   253         choices: [
+   254           { text: "I can protect you. Tell me where the warehouse is.", next: "wareh
+       ouse_info", morality: 3 },
+   255           { text: "You're already in danger. Help me stop them.", next: "full_info"
+       },
+   256           { text: "The Zhentarim will come for you either way.", next: "full_info" }
+   257         ]
+   258       },
+   259       gentle_approach: {
+   260         speech: "... You have kind eyes. Not like theirs. *sighs* I've been watching
+        the docks for months. Men in black cloaks moving crates by night. I tracked one shi
+       pment — it went to the old ruins east of the city. But that's all I know. I swear it
+       .",
+   261         choices: [
+   262           { text: "That's more than enough. Thank you.", next: "warehouse_info" },
+   263           { text: "Can you show me on a map?", next: "map_info" }
+   264         ]
+   265       },
+   266       persuade: {
+   267         speech: "... You're right. I am scared. And it's eating me alive. They threa
+       tened my family. But what they're doing is monstrous. The ingredients... they're for
+        a ritual. The children's sickness isn't a plague — it's a curse. A binding curse. A
+       nd the cultists need twelve children as anchors for their ritual. TWELVE. The exact
+       number that are sick.",
+   268         choices: [
+   269           { text: "Gods. Where is their base?", next: "full_info", questUpdate: "rui
+       ns_location" },
+   270           { text: "We have to stop this immediately.", next: "full_info", questUpdat
+       e: "ruins_location", morality: 5 }
+   271         ]
+   272       },
+   273       persuade_fail: {
+   274         speech: "I don't know what you're talking about! Please, just leave me alone
+       . I have a family.",
+   275         choices: [
+   276           { text: "I understand. I'm sorry.", next: "farewell" },
+   277           { text: "[COIN] Perhaps this will change your mind.", next: "bribe", cost:
+        20 }
+   278         ]
+   279       },
+   280       bribe: {
+   281         speech: "... *takes the gold and pockets it quickly* The warehouse on Pier S
+       even. They use a green lamp signal. The leader is a woman called Vexira — she's no o
+       rdinary cultist. She commands them all. The ruins outside town are where she does he
+       r... work. I've said too much.",
+   282         choices: [
+   283           { text: "One more question: who hired them?", next: "neverember_hint" },
+   284           { text: "Thank you. I'll handle this.", next: "farewell", questUpdate: "ru
+       ins_location" }
+   285         ]
+   286       },
+   287       warehouse_info: {
+   288         speech: "The old ruins east of town — through the Pilgrim's Gate. That's whe
+       re they meet. Look for the black pentagram carved above the entrance. And be careful
+       . Vexira... she isn't just a cultist. She's something more now.",
+   289         choices: [
+   290           { text: "What do you mean?", next: "vexira_warning" },
+   291           { text: "I'll check it out.", next: "farewell", questUpdate: "ruins_locati
+       on" }
+   292         ]
+   293       },
+   294       full_info: {
+   295         speech: "The ruins east of town. But there's more — I overheard one of them
+       mention a noble. Someone inside the city's power structure is providing cover for th
+       e Zhentarim. I don't know who, but it goes high. Very high. Please... please stop th
+       em.",
+   296         choices: [
+   297           { text: "I will. And I'll make sure you're protected.", next: "farewell",
+       questUpdate: "ruins_location", morality: 3 },
+   298           { text: "Every man for himself, but thanks for the info.", next: "farewell
+       ", questUpdate: "ruins_location" }
+   299         ]
+   300       },
+   301       map_info: {
+   302         speech: "Here — *sketches on a scrap of parchment* — east road, past the Pil
+       grim's Gate, follow the old aqueduct. You'll see the ruins. There's a black pentagra
+       m carved above the main entrance. Can't miss it.",
+   303         choices: [
+   304           { text: "Thank you, Garrett. Stay safe.", next: "farewell", questUpdate: "
+       ruins_location" }
+   305         ]
+   306       },
+   307       neverember_hint: {
+   308         speech: "I've said more than enough. But... look to power when you find evil
+       . That's all I'll say. *turns away*",
+   309         choices: [
+   310           { text: "Understood.", next: "farewell" }
+   311         ]
+   312       },
+   313       vexira_warning: {
+   314         speech: "She was just a cultist two months ago. Now the others treat her lik
+       e a goddess. I saw her stop a crossbow bolt mid-air with a gesture. Whatever ritual
+       she's performing... it's already working. She's drawing power from somewhere dark.",
+   315         choices: [
+   316           { text: "She'll be stopped. I promise.", next: "farewell", morality: 3 }
+   317         ]
+   318       },
+   319       farewell: {
+   320         speech: "Please be careful. And if you can... get my family out of Neverwint
+       er first. They're at the Blue Lantern Inn, Anvil Street.",
+   321         choices: []
+   322       }
+   323     }
+   324   },
+   325   whisper: {
+   326     name: "Whisper", emoji: "🐍", title: "Information Broker",
+   327     portrait: "🐍", faction: null,
+   328     states: {
+   329       initial: {
+   330         speech: "Ah. A new face with hungry eyes. That's my favorite kind. I'm calle
+       d Whisper, and information is my trade. What you seek, I likely know. But in my busi
+       ness, everything has a price. What would you like to know today?",
+   331         choices: [
+   332           { text: "What do you know about the Zhentarim?", next: "zhentarim_info" },
+   333           { text: "Tell me about Vexira.", next: "vexira_price" },
+   334           { text: "What do you know about Lord Neverember?", next: "neverember_price
+       " },
+   335           { text: "[FAVOR] I'll owe you one.", next: "favor_offer" }
+   336         ]
+   337       },
+   338       zhentarim_info: {
+   339         speech: "The Black Network? Now that's a topic worth discussing. For twenty
+       gold I can tell you the full extent of their operation in Neverwinter. For fifty, I'
+       ll tell you about their secret contact inside the city guard. What's it worth to you
+       ?",
+   340         choices: [
+   341           { text: "[20 GOLD] The basic information.", next: "zhentarim_basic", cost:
+        20 },
+   342           { text: "[50 GOLD] Everything you know.", next: "zhentarim_full", cost: 50
+        },
+   343           { text: "I'm not paying your prices.", next: "haggle" }
+   344         ]
+   345       },
+   346       zhentarim_basic: {
+   347         speech: "Smart investment. The Zhentarim have been using Neverwinter as a su
+       pply route for three months. They're shipping void salts and other alchemical compon
+       ents to a woman called Vexira, who's set up shop in the old ruins east of town. They
+        have twelve agents in the city, but most are just lookouts.",
+   348         choices: [
+   349           { text: "Who is Vexira?", next: "vexira_price" },
+   350           { text: "Thank you, Whisper.", next: "farewell", questUpdate: "zhentarim_i
+       nfo" }
+   351         ]
+   352       },
+   353       zhentarim_full: {
+   354         speech: "Now we're talking. The Zhentarim contact inside the guard is Sergea
+       nt Aldric — third watch, Eastern Gate. He's been paid to look the other way when shi
+       pments come through. But here's the real gem: their paymaster isn't the Zhentarim at
+        all. Someone far more powerful is bankrolling this. Someone with a lord's treasury.
+       ",
+   355         choices: [
+   356           { text: "Lord Neverember?", next: "neverember_hint_whisper" },
+   357           { text: "This is bigger than I thought.", next: "farewell", questUpdate: "
+       full_zhentarim_info" }
+   358         ]
+   359       },
+   360       vexira_price: {
+   361         speech: "Vexira. *long pause* That name costs extra. Not because the informa
+       tion is rare — it's because people who ask about her tend to end up dead. I'll tell
+       you what I know for thirty gold and a promise that my name never reaches her ears.",
+   362         choices: [
+   363           { text: "[30 GOLD] Deal.", next: "vexira_info", cost: 30 },
+   364           { text: "I can't promise that.", next: "vexira_refuse" },
+   365           { text: "Too rich for me.", next: "farewell" }
+   366         ]
+   367       },
+   368       vexira_info: {
+   369         speech: "Vexira was a minor cult priestess three months ago. Then she found
+       something in the Cloakwood — a pact stone, they call it. A fragment of draconic powe
+       r. She used it to broker an arrangement with Szartharrax, a young black dragon who l
+       air beneath the Cloakwood. Now she draws power from the dragon, and the dragon gets.
+       .. well. Twelve souls. The children are the price.",
+   370         choices: [
+   371           { text: "We have to stop the ritual.", next: "ritual_info", morality: 5, q
+       uestUpdate: "vexira_known" },
+   372           { text: "So she's working with a dragon.", next: "dragon_info" }
+   373         ]
+   374       },
+   375       ritual_info: {
+   376         speech: "The ritual completes on the new moon — four days from now. When tho
+       se twelve souls are bound, Szartharrax gains the power to cast spells as a sorcerer.
+        A dragon with humanoid spellcasting... Neverwinter wouldn't survive the week. You n
+       eed to move quickly.",
+   377         choices: [
+   378           { text: "I'll stop it.", next: "farewell" },
+   379           { text: "Is there any way to break the ritual early?", next: "break_ritual
+       " }
+   380         ]
+   381       },
+   382       break_ritual: {
+   383         speech: "Kill Vexira before she completes the binding. The dragon's power fl
+       ows through her — cut that thread and the ritual unravels. But you'll need allies. A
+       nd you'll need to find the dragon's lair. Miri the healer knows the Cloakwood better
+        than anyone.",
+   384         choices: [
+   385           { text: "Understood. Thank you.", next: "farewell" }
+   386         ]
+   387       },
+   388       dragon_info: {
+   389         speech: "Szartharrax is young by dragon standards — only about forty years o
+       ld. But young dragons are reckless and ambitious. He sees this deal as an investment
+       . Once he has spell power, he plans to use Neverwinter as his base of operations. Ve
+       ry... entrepreneurial of him.",
+   390         choices: [
+   391           { text: "How do we stop him?", next: "ritual_info" }
+   392         ]
+   393       },
+   394       neverember_price: {
+   395         speech: "Lord Dagult Neverember. Now there's a name that sends a chill down
+       my spine. That information will cost you... nothing. Because some things are too imp
+       ortant to sell. *leans closer* He's been compromised. The Zhentarim have something o
+       n him — a secret that would end his lordship. They're using it to buy his silence wh
+       ile Vexira completes her work.",
+   396         choices: [
+   397           { text: "What secret?", next: "neverember_secret" },
+   398           { text: "He needs to be confronted.", next: "neverember_confront", moralit
+       y: 3 }
+   399         ]
+   400       },
+   401       neverember_secret: {
+   402         speech: "His 'legitimate son' — the heir — isn't legitimate at all. Neveremb
+       er has been secretly funding rebel groups in Waterdeep for years, playing both sides
+       . The Zhentarim found out. Now he does what they say or his reputation crumbles. The
+        man isn't evil — he's terrified and making terrible choices.",
+   403         choices: [
+   404           { text: "There might be a way to help him.", next: "farewell", morality: 5
+        },
+   405           { text: "He should face consequences.", next: "farewell", morality: -5 }
+   406         ]
+   407       },
+   408       neverember_confront: {
+   409         speech: "Brave words. Be careful — a cornered man is dangerous, especially o
+       ne with an army. Show him evidence of Vexira's work. If he sees the true scale of wh
+       at he's enabled, he might choose redemption over cowardice.",
+   410         choices: [
+   411           { text: "I'll find that evidence first.", next: "farewell" }
+   412         ]
+   413       },
+   414       neverember_hint_whisper: {
+   415         speech: "*smiles slowly* Now you're asking the right questions. Yes. The Lor
+       d of Neverwinter has been... persuaded to look away. But he isn't beyond saving. Fin
+       d proof of the ritual and confront him — publicly, where he can't deny it. His pride
+        might just outweigh his fear.",
+   416         choices: [
+   417           { text: "Thank you, Whisper. This changes things.", next: "farewell" }
+   418         ]
+   419       },
+   420       favor_offer: {
+   421         speech: "A favor? *laughs softly* I do love favors. They compound nicely. Ve
+       ry well. One favor, redeemable whenever I choose. In exchange: Vexira is in the ruin
+       s east of town, she's working with a dragon named Szartharrax who lairs beneath the
+       Cloakwood, and Lord Neverember is being blackmailed into cooperation. That's three t
+       ruths for one favor. A generous rate.",
+   422         choices: [
+   423           { text: "You have my word.", next: "farewell", questUpdate: "full_zhentari
+       m_info", morality: -3 },
+   424           { text: "Sounds like a trap. Never mind.", next: "farewell" }
+   425         ]
+   426       },
+   427       haggle: {
+   428         speech: "Haggling? How refreshingly common. Fine. Tell me something I don't
+       know, and we'll call it even. What have you learned in your travels?",
+   429         choices: [
+   430           { text: "The children's sickness is a binding curse.", next: "haggle_trade
+       ", questCheck: "sick_children" },
+   431           { text: "I don't have anything worth trading.", next: "farewell" }
+   432         ]
+   433       },
+   434       haggle_trade: {
+   435         speech: "Hmm. That's... actually useful. Very well. The Zhentarim have twelv
+       e agents in town. They use Pier Seven as their entry point. Their leader is in the r
+       uins east of town — Vexira the cultist. That's my side of the trade.",
+   436         choices: [
+   437           { text: "We're square then.", next: "farewell", questUpdate: "zhentarim_in
+       fo" }
+   438         ]
+   439       },
+   440       vexira_refuse: {
+   441         speech: "Wise. She has ears everywhere — including, I suspect, inside the ci
+       ty watch. Be careful who you trust, stranger. Not everyone wearing a badge is on you
+       r side.",
+   442         choices: [
+   443           { text: "I'll keep that in mind.", next: "farewell" }
+   444         ]
+   445       },
+   446       farewell: {
+   447         speech: "Watch your back, friend. Neverwinter has teeth, and they're very sh
+       arp just now. Come back if you need anything else — my prices are always... negotiab
+       le.",
+   448         choices: []
+   449       }
+   450     }
+   451   },
+   452   tormund: {
+   453     name: "Tormund", emoji: "⚔️", title: "Veteran Warrior",
+   454     portrait: "⚔️", faction: "lords",
+   455     states: {
+   456       initial: {
+   457         speech: "*bleeding from a wound on his arm, back against a ruined wall* Ther
+       e's six of them! *sees you* About time someone came. Are you with the guard, or just
+        a fool wandering into an ambush?",
+   458         choices: [
+   459           { text: "Neither — I'm here to help!", next: "rescue", morality: 5 },
+   460           { text: "Looks like you could use a hand.", next: "rescue" },
+   461           { text: "What's going on here?", next: "explain" }
+   462         ]
+   463       },
+   464       explain: {
+   465         speech: "Zhentarim! Six of them jumped me when I got close to their warehous
+       e. I killed two but they winged me good. I'm Tormund Ironridge — used to serve with
+       the Neverwinter regulars. These bastards are everywhere now. Help me deal with the l
+       ast four and I'll owe you my life.",
+   466         choices: [
+   467           { text: "Let's take them down together!", next: "rescue", morality: 3 },
+   468           { text: "I'll help if you tell me what you know.", next: "deal" }
+   469         ]
+   470       },
+   471       rescue: {
+   472         speech: "*stands and draws his greatsword* Right then! On your left!",
+   473         choices: [],
+   474         triggerCombat: "tormund_ambush",
+   475         isRescue: true
+   476       },
+   477       deal: {
+   478         speech: "A deal in the middle of a fight?! You've got nerve, I'll give you t
+       hat. Fine — help me survive and I'll tell you everything I know about Vexira's opera
+       tion. Deal?",
+   479         choices: [
+   480           { text: "Deal. Let's fight!", next: "rescue", morality: -2 },
+   481           { text: "Good enough for me.", next: "rescue" }
+   482         ]
+   483       },
+   484       rescued: {
+   485         speech: "*breathing heavily* That was close. I owe you, and Tormund Ironridg
+       e pays his debts. I've been tracking the Zhentarim for two weeks. Vexira's cult is h
+       oled up in the ruins east of town, but there's something else — she's bound a dragon
+       . A young one, but still. They're planning something big for the new moon.",
+   486         choices: [
+   487           { text: "Will you join me? I could use your sword.", next: "join_party", m
+       orality: 3 },
+   488           { text: "What do you know about the cult's defenses?", next: "defenses" },
+   489           { text: "A dragon? That changes things.", next: "dragon_talk" }
+   490         ]
+   491       },
+   492       join_party: {
+   493         speech: "Ha! I was hoping you'd ask. An old soldier needs purpose, and this
+       cause is worth bleeding for. You'll have my sword, my shield, and my bad jokes. Fair
+        warning on the last one. *extends hand* Tormund Ironridge, at your service.",
+   494         choices: [
+   495           { text: "Welcome aboard, Tormund.", next: "farewell", joinParty: true },
+   496           { text: "We move at dawn.", next: "farewell", joinParty: true }
+   497         ]
+   498       },
+   499       defenses: {
+   500         speech: "Six guards at the main entrance, rotating in pairs. Inside, maybe t
+       wenty cultists and a half-dozen Zhentarim agents. Vexira herself is deeper in — ther
+       e's a ritual chamber below ground. She won't come up to fight; she'll let her people
+        die first.",
+   501         choices: [
+   502           { text: "I'll need to fight through them.", next: "join_party" },
+   503           { text: "Is there another way in?", next: "secret_entrance" }
+   504         ]
+   505       },
+   506       dragon_talk: {
+   507         speech: "Aye. Szartharrax. Young dragon, black — acid type. Nasty. But here'
+       s something interesting: I overheard a cultist say the dragon isn't fully committed
+       to the deal. He's using Vexira as much as she's using him. There might be a way to d
+       rive a wedge between them... if you're clever enough.",
+   508         choices: [
+   509           { text: "Will you help me figure that out?", next: "join_party" }
+   510         ]
+   511       },
+   512       secret_entrance: {
+   513         speech: "Actually... yes. There's a collapsed aqueduct on the north side. Ti
+       ght fit, but a determined person could get through. Leads right to the ritual chambe
+       r. Risky, but it bypasses most of the guards.",
+   514         choices: [
+   515           { text: "Good to know. Come with me?", next: "join_party" }
+   516         ]
+   517       },
+   518       farewell: {
+   519         speech: "Stay sharp. These cultists don't take prisoners — they take sacrifi
+       ces. We'll end this.",
+   520         choices: []
+   521       }
+   522     }
+   523   },
+   524   miri: {
+   525     name: "Miri", emoji: "💚", title: "Field Healer",
+   526     portrait: "💚", faction: null,
+   527     states: {
+   528       initial: {
+   529         speech: "Oh! A visitor — I don't get many of those out here. I'm Miri. I've
+       been studying the plants in the Cloakwood, though it's gotten terribly dangerous lat
+       ely. The undead... they're spreading further from the ruins every week. Is there som
+       ething I can help you with?",
+   530         choices: [
+   531           { text: "Elara sent me about the sick children.", next: "children_quest" }
+       ,
+   532           { text: "I'm looking for Nightshade Bloom.", next: "nightshade_info" },
+   533           { text: "Can you heal my wounds?", next: "healing_offer" },
+   534           { text: "I need crafting help.", next: "crafting_offer" }
+   535         ]
+   536       },
+   537       children_quest: {
+   538         speech: "The children with the black veins! I've been trying to get informat
+       ion to Elara for a week, but I couldn't leave my camp — the undead have me pinned. T
+       he illness is a binding curse, tied to a ritual. To break it, the ritual must be dis
+       rupted or the cultist maintaining it must die. But there's also a protective draught
+        I can make.",
+   539         choices: [
+   540           { text: "What do you need to make it?", next: "ingredients" },
+   541           { text: "I'll stop the ritual directly.", next: "direct_approach", moralit
+       y: 3 },
+   542           { text: "Tell me about the draught.", next: "draught_info" }
+   543         ]
+   544       },
+   545       ingredients: {
+   546         speech: "I need two things: a Nightshade Bloom — it grows near the standing
+       stones deeper in the Cloakwood — and a Dragon Scale. The dragon's essence in the sca
+       le counters the draconic magic in the curse. If you can bring me both, I can make a
+       draught that might save the children even if the ritual completes.",
+   547         choices: [
+   548           { text: "I'll find them both.", next: "ingredient_quest", questUpdate: "mi
+       ri_ingredients" },
+   549           { text: "I already have them!", next: "have_ingredients", questCheck: "mir
+       i_ingredients" }
+   550         ]
+   551       },
+   552       have_ingredients: {
+   553         speech: "You do?! Oh, this is wonderful! Let me get to work immediately. *be
+       gins mixing with practiced efficiency* This will take a few minutes, but when it's d
+       one... we'll have enough draught to protect a dozen children. Thank you. Truly.",
+   554         choices: [
+   555           { text: "Can you teach me the recipe too?", next: "teach_craft", morality:
+        3 },
+   556           { text: "Keep the extra. You may need it.", next: "farewell", giveItem: "e
+       lixir_of_health" }
+   557         ]
+   558       },
+   559       ingredient_quest: {
+   560         speech: "Be careful in the deeper wood. The Nightshade Bloom grows in rings
+       around the standing stones — it's distinctive, midnight-blue petals with silver vein
+       s. As for dragon scales... well. There's only one dragon in these woods. I'd suggest
+        finding another source if possible, but if not... good luck.",
+   561         choices: [
+   562           { text: "I'll be back soon.", next: "farewell" }
+   563         ]
+   564       },
+   565       teach_craft: {
+   566         speech: "Of course! It's a simple enough recipe once you understand the prin
+       ciple — draconic essence neutralizes draconic curses. The scale must be ground and t
+       he bloom steeped for exactly six hours. Here, I'll write it down for you. *scribbles
+        in a notebook* Take this. You might need it before this is over.",
+   567         choices: [
+   568           { text: "Thank you, Miri.", next: "farewell", questUpdate: "learned_crafti
+       ng", unlockCrafting: true }
+   569         ]
+   570       },
+   571       healing_offer: {
+   572         speech: "Of course! A healer's work is never done. *examines your wounds* Th
+       ese are serious. Here — hold still. *begins treating injuries* I can patch you up, b
+       ut you should rest. These wounds are from Zhentarim steel unless I miss my guess.",
+   573         choices: [
+   574           { text: "You're right. Can you tell me about them?", next: "children_quest
+       ", healParty: true },
+   575           { text: "Thank you. I'll be careful.", next: "farewell", healParty: true }
+   576         ]
+   577       },
+   578       crafting_offer: {
+   579         speech: "Ah! You've learned something of the craft? I can work with ingredie
+       nts if you bring them to me. Dragon Scale and Nightshade Bloom can create a protecti
+       ve draught. I can also combine healing potions with rare materials for stronger effe
+       cts. What do you have?",
+   580         choices: [
+   581           { text: "Let me check my supplies.", next: "farewell", openCrafting: true
+       },
+   582           { text: "I'll gather ingredients first.", next: "farewell" }
+   583         ]
+   584       },
+   585       nightshade_info: {
+   586         speech: "The Nightshade Bloom grows in the deeper Cloakwood, near the standi
+       ng stones. Midnight-blue petals, silver veins. You'll know it when you see it — it s
+       eems to glow faintly in the dark. But the undead are thickest there. It's not a plea
+       sant walk.",
+   587         choices: [
+   588           { text: "Any advice for dealing with the undead?", next: "undead_advice" }
+       ,
+   589           { text: "I'll manage.", next: "farewell" }
+   590         ]
+   591       },
+   592       undead_advice: {
+   593         speech: "Radiant magic is best — light-based spells. Fire works too. Bludgeo
+       ning is more effective than slashing or piercing. And for the ghouls specifically: d
+       on't let them touch you bare skin. Their claws carry a paralyzing toxin. Keep your d
+       istance if you can.",
+   594         choices: [
+   595           { text: "Good to know. Thank you.", next: "farewell" }
+   596         ]
+   597       },
+   598       draught_info: {
+   599         speech: "The Draught of Dragon Resistance — it creates temporary magical res
+       istance to the curse's effects. If the children drink it, the curse will be weakened
+        enough that their own constitution can fight it off. It won't cure them permanently
+       , but it buys time until the ritual is disrupted.",
+   600         choices: [
+   601           { text: "What ingredients do you need?", next: "ingredients" }
+   602         ]
+   603       },
+   604       direct_approach: {
+   605         speech: "That's certainly effective. Kill Vexira, break the ritual, free the
+        children. Simple in principle, terrifying in execution. Be aware: if the ritual is
+       severed violently, there may be a magical backlash. The children will survive, but i
+       t won't be pleasant for them. Still — alive and scarred is better than bound forever
+       .",
+   606         choices: [
+   607           { text: "It'll have to be enough.", next: "farewell" }
+   608         ]
+   609       },
+   610       farewell: {
+   611         speech: "Come back to me if you're wounded. And please — be careful in the C
+       loakwood. I'd hate to lose a potential friend to an overeager ghoul.",
+   612         choices: []
+   613       }
+   614     }
+   615   },
+   616   lord_neverember: {
+   617     name: "Lord Neverember", emoji: "👑", title: "Lord Protector of Neverwinter",
+   618     portrait: "👑", faction: "lords",
+   619     states: {
+   620       initial: {
+   621         speech: "Ah, an adventurer. My city has need of capable hands. I've heard re
+       ports of... unrest in the ruins district. Cultists, they say. I want them dealt with
+        quietly. No proclamations, no panic. Handle it discreetly and you'll be well compen
+       sated.",
+   622         choices: [
+   623           { text: "I'll look into it.", next: "assignment" },
+   624           { text: "What do you know about Vexira?", next: "vexira_probe" },
+   625           { text: "I know you're being blackmailed.", next: "confrontation", questCh
+       eck: "neverember_secret" }
+   626         ]
+   627       },
+   628       assignment: {
+   629         speech: "Good. The ruins east of the Pilgrim's Gate — the Zhentarim have bee
+       n using them as a base. Clear them out. Bring me proof of their leader's identity, a
+       nd I'll pay you five hundred gold. *shuffles papers, not meeting your eyes* That wil
+       l be all.",
+   630         choices: [
+   631           { text: "Something tells me there's more to this.", next: "probe" },
+   632           { text: "Five hundred gold. I'll do it.", next: "farewell", questUpdate: "
+       neverember_quest" }
+   633         ]
+   634       },
+   635       probe: {
+   636         speech: "*pauses, something flashing in his eyes — guilt? fear?* The Zhentar
+       im are simply criminals operating in my city. Nothing more. *more firmly* Nothing. M
+       ore. I suggest you focus on your assignment.",
+   637         choices: [
+   638           { text: "As you say, my lord.", next: "farewell" },
+   639           { text: "I'll discover the truth myself.", next: "farewell", morality: 3 }
+   640         ]
+   641       },
+   642       vexira_probe: {
+   643         speech: "I don't... *swallows* I know the name. She's the cult leader in the
+        ruins. A dangerous woman. That's why I need her dealt with quickly.",
+   644         choices: [
+   645           { text: "You seem nervous about her.", next: "nervous" },
+   646           { text: "I'll handle it.", next: "farewell" }
+   647         ]
+   648       },
+   649       nervous: {
+   650         speech: "I am simply concerned for my city! Now please, focus on the task at
+       — *a messenger bursts in* What?! Not now! *looks at you* I think you should leave.",
+   651         choices: [
+   652           { text: "We'll speak again, my lord.", next: "farewell" }
+   653         ]
+   654       },
+   655       confrontation: {
+   656         speech: "*face goes white* Where did you hear— *long silence, then slumps* G
+       ods. You know. *quietly* Yes. They have letters. Documents that would end my lordshi
+       p. I've been... allowing their operations to continue in exchange for silence. I tol
+       d myself it was just smuggling. Petty crime. But the children...",
+   657         choices: [
+   658           { text: "You have to help me stop this. For the children.", next: "redempt
+       ion", morality: 5 },
+   659           { text: "I could turn you in right now.", next: "blackmail_him", morality:
+        -10 },
+   660           { text: "Help me and I'll keep your secret.", next: "deal_neverember" }
+   661         ]
+   662       },
+   663       redemption: {
+   664         speech: "*stands slowly* You're right. I've been a coward when my people nee
+       ded a lord. *removes signet ring* Take this. It opens the restricted armory and my p
+       ersonal vault. Use whatever you need. And when this is over... I'll face whatever ju
+       dgment the gods see fit to deliver.",
+   665         choices: [
+   666           { text: "That takes courage, my lord.", next: "farewell", giveItem: "never
+       bember_signet", morality: 8, questUpdate: "neverember_redeemed" },
+   667           { text: "The city needs you. Make it right.", next: "farewell", giveItem:
+       "neverbember_signet", questUpdate: "neverember_redeemed" }
+   668         ]
+   669       },
+   670       blackmail_him: {
+   671         speech: "*bristles with anger* You wouldn't dare— *looks at your expression*
+        ...You would. Fine. What do you want?",
+   672         choices: [
+   673           { text: "Your signet ring and access to the armory.", next: "forced_help",
+        morality: -5 },
+   674           { text: "Your full cooperation against Vexira.", next: "forced_help" }
+   675         ]
+   676       },
+   677       forced_help: {
+   678         speech: "*throws the signet ring at your feet* Take it. And when this city f
+       alls or when it's saved, remember that you helped create this moment.",
+   679         choices: [
+   680           { text: "*pick up the ring*", next: "farewell", giveItem: "neverbember_sig
+       net", questUpdate: "neverember_coerced" }
+   681         ]
+   682       },
+   683       deal_neverember: {
+   684         speech: "*studies you for a long moment* A pragmatist. I can respect that. *
+       hands over signet ring* Help me, and your silence is your reward. Along with whateve
+       r else I can offer. We clear Vexira out, and this whole business becomes... a secret
+        we share.",
+   685         choices: [
+   686           { text: "We have a deal.", next: "farewell", giveItem: "neverbember_signet
+       ", questUpdate: "neverember_deal", morality: -3 }
+   687         ]
+   688       },
+   689       farewell: {
+   690         speech: "Go. Do what must be done. May the gods guide your blade.",
+   691         choices: []
+   692       }
+   693     }
+   694   },
+   695   zara: {
+   696     name: "Captain Zara", emoji: "🛡️", title: "Guard Captain",
+   697     portrait: "🛡️", faction: "lords",
+   698     states: {
+   699       initial: {
+   700         speech: "Halt. I'm Captain Zara, Neverwinter Watch. We've had reports of una
+       uthorized individuals entering restricted areas. State your business and show me you
+       r papers, if you have them.",
+   701         choices: [
+   702           { text: "I'm investigating the cult activity.", next: "investigation_claim
+       " },
+   703           { text: "[PERSUASION] Lord Neverember sent me.", next: "persuade_neverembe
+       r", skillCheck: {skill:"cha",dc:12} },
+   704           { text: "Show Neverember's signet.", next: "show_signet", itemCheck: "neve
+       rbember_signet" },
+   705           { text: "I don't answer to city guards.", next: "hostile", morality: -3 }
+   706         ]
+   707       },
+   708       investigation_claim: {
+   709         speech: "Cult activity. *crosses arms* Half the city claims to be investigat
+       ing something. What evidence do you have? What have you learned? Convince me you're
+       not just another glory seeker and I might actually help you.",
+   710         choices: [
+   711           { text: "The children's sickness is a binding curse.", next: "impressed",
+       questCheck: "sick_children" },
+   712           { text: "The Zhentarim are operating from the eastern ruins.", next: "impr
+       essed", questCheck: "ruins_location" },
+   713           { text: "I'm still gathering information.", next: "disappointed" }
+   714         ]
+   715       },
+   716       impressed: {
+   717         speech: "...That's more than I expected. You've been doing serious work. *lo
+       wers voice* Look — I have my orders, which say to maintain order and not cause a pan
+       ic. But I also have children in this city, and I'm not about to let them die for pol
+       itics. What do you need?",
+   718         choices: [
+   719           { text: "Access to the eastern gate without harassment.", next: "access_gr
+       anted", morality: 3 },
+   720           { text: "Information on Zhentarim agents in the watch.", next: "insider_in
+       fo" },
+   721           { text: "Military support for the final assault.", next: "military_support
+       " }
+   722         ]
+   723       },
+   724       access_granted: {
+   725         speech: "Done. You'll have a watch token — show it at any gate and you'll pa
+       ss without question. *presses a brass disc into your hand* Don't make me regret this
+       .",
+   726         choices: [
+   727           { text: "I won't. Thank you, Captain.", next: "farewell", questUpdate: "za
+       ra_allied" }
+   728         ]
+   729       },
+   730       insider_info: {
+   731         speech: "*jaw tightens* So you know about that. Yes. Sergeant Aldric. I've s
+       uspected him for weeks but couldn't prove it without tipping off his handlers. I'll
+       have him detained tonight — quietly. That should shut down one of their information
+       channels.",
+   732         choices: [
+   733           { text: "Good. Together we can end this.", next: "farewell", morality: 3,
+       questUpdate: "aldric_detained" }
+   734         ]
+   735       },
+   736       military_support: {
+   737         speech: "I want to. By the gods, I want to march on those ruins with my full
+        complement. But Lord Neverember has expressly forbidden military action without his
+        written order. Unless... you could get that order?",
+   738         choices: [
+   739           { text: "I'm working on Neverember.", next: "farewell" },
+   740           { text: "Show signet ring.", next: "military_granted", itemCheck: "neverbe
+       mber_signet" }
+   741         ]
+   742       },
+   743       military_granted: {
+   744         speech: "The Lord's signet! *stands to attention* Then you have his authoriz
+       ation. I'll have two dozen soldiers ready to march at your signal. Give the word whe
+       n you need us.",
+   745         choices: [
+   746           { text: "Be ready. It happens soon.", next: "farewell", questUpdate: "mili
+       tary_support" }
+   747         ]
+   748       },
+   749       persuade_neverember: {
+   750         speech: "*relaxes slightly* Lord Neverember, you say? I'll need more than wo
+       rds. What's your business with the ruins?",
+   751         choices: [
+   752           { text: "Investigating the cult that's cursing the children.", next: "inve
+       stigation_claim" }
+   753         ]
+   754       },
+   755       persuade_fail: {
+   756         speech: "Anyone can claim to work for the Lord. Move along before I have you
+        detained for loitering.",
+   757         choices: [
+   758           { text: "Fine. I'll handle this without the watch.", next: "farewell", mor
+       ality: -2 }
+   759         ]
+   760       },
+   761       show_signet: {
+   762         speech: "*eyes widen* The Lord's signet ring! Then you have his full authori
+       ty. Forgive me — I didn't know. What do you need, and it shall be done.",
+   763         choices: [
+   764           { text: "Military support for the ruins assault.", next: "military_granted
+       " },
+   765           { text: "Free passage through all gates.", next: "access_granted" }
+   766         ]
+   767       },
+   768       hostile: {
+   769         speech: "*hand goes to sword* Is that so? Then perhaps you'd like to explain
+        yourself to the magistrate. I can arrange that very easily.",
+   770         choices: [
+   771           { text: "I apologize. Let me start over.", next: "initial", morality: 0 },
+   772           { text: "*walk away*", next: "farewell" }
+   773         ]
+   774       },
+   775       disappointed: {
+   776         speech: "Come back when you have something concrete. I deal in facts, not th
+       eories. Until then, stay out of the restricted areas.",
+   777         choices: [
+   778           { text: "Understood.", next: "farewell" }
+   779         ]
+   780       },
+   781       farewell: {
+   782         speech: "Move with purpose, stranger. This city is counting on people like y
+       ou right now, whether it knows it or not.",
+   783         choices: []
+   784       }
+   785     }
+   786   },
+   787   vexira: {
+   788     name: "Vexira", emoji: "💀", title: "High Cultist of the Void",
+   789     portrait: "💀", faction: null,
+   790     states: {
+   791       first_encounter: {
+   792         speech: "*turns slowly, eyes glowing violet* You've come further than I expe
+       cted. Most heroes die at the gate. *regards you with genuine curiosity* What are you
+       ? Just another sword arm hired to clean up the mess? Or something more interesting?"
+       ,
+   793         choices: [
+   794           { text: "I'm here to stop your ritual.", next: "defiant", morality: 5 },
+   795           { text: "I'm here to kill you.", next: "violent" },
+   796           { text: "I want to understand what you're doing.", next: "parley" },
+   797           { text: "[CHA] You don't have to do this.", next: "appeal", skillCheck: {s
+       kill:"cha",dc:18} }
+   798         ]
+   799       },
+   800       defiant: {
+   801         speech: "Stop it? *laughs* The ritual is already half-complete. The children
+       's essence feeds the stone even now. Kill me if you must — my death will merely acce
+       lerate the binding. The only way to save them is to break the pact stone, which Szar
+       tharrax guards with his life. *draws her weapon* But you're welcome to try.",
+   802         choices: [
+   803           { text: "Then I'll fight you here.", next: "fight", triggerCombat: "vexira
+       _act3" },
+   804           { text: "Where is the pact stone?", next: "pact_stone_info" }
+   805         ]
+   806       },
+   807       violent: {
+   808         speech: "Direct. I respect that. *violet fire coils around her hands* Most w
+       aste time with words. Let's not.",
+   809         choices: [
+   810           { text: "*FIGHT!*", next: "fight", triggerCombat: "vexira_act3" }
+   811         ]
+   812       },
+   813       parley: {
+   814         speech: "Understanding? *surprised pause* Now that's unexpected. Very well.
+       I serve Szartharrax willingly. Not out of fear — out of vision. A dragon-mage ruling
+        Neverwinter would bring order. Real order. The kind that doesn't depend on corrupt
+       lords and frightened merchants. I am creating something better.",
+   815         choices: [
+   816           { text: "By enslaving children?", next: "children_challenge", morality: 5
+       },
+   817           { text: "Your 'order' sounds like tyranny.", next: "defiant" },
+   818           { text: "What would you gain from this arrangement?", next: "her_motivatio
+       n" }
+   819         ]
+   820       },
+   821       children_challenge: {
+   822         speech: "Sacrifice. Not slavery. *a flicker of something — doubt? — crosses
+       her face* The children sleep. They'll wake when the ritual is complete. They won't r
+       emember. Most of them. *quieter* The few who don't... they serve a greater purpose."
+       ,
+   823         choices: [
+   824           { text: "You know that's wrong. I can see it in your face.", next: "final_
+       appeal", morality: 5 },
+   825           { text: "That's monstrous.", next: "fight", triggerCombat: "vexira_act3" }
+   826         ]
+   827       },
+   828       final_appeal: {
+   829         speech: "*stops* ...I've walked too far down this road to turn back. The dra
+       gon would kill me. I have no other path. *raises weapon, but with less conviction* F
+       orgive me.",
+   830         choices: [
+   831           { text: "Fight.", next: "fight", triggerCombat: "vexira_act3" },
+   832           { text: "[CHA 18] There is always another path.", next: "appeal", skillChe
+       ck: {skill:"cha",dc:18} }
+   833         ]
+   834       },
+   835       appeal: {
+   836         speech: "...*long silence* I... *the violet light dims slightly* You speak t
+       ruth. I started this because I believed in something. Not... not this. *her hands lo
+       wer* But it's too late. The dragon will kill me whether I complete the ritual or not
+        now. I just wanted to matter.",
+   837         choices: [
+   838           { text: "Then help me face the dragon. Together.", next: "vexira_ally", mo
+       rality: 8 },
+   839           { text: "Tell me how to break the ritual.", next: "ritual_break_info" }
+   840         ]
+   841       },
+   842       vexira_ally: {
+   843         speech: "*looks up with something fragile in her eyes* Together? I've killed
+        your kind before. ...But perhaps that's exactly the point. Very well. I know Szarth
+       arrax's weakness — the pact stone is embedded in his chest scales, left side. Destro
+       y it and his spell power fractures. He'll be vulnerable. I can distract him. *grimly
+       * Don't let my sacrifice be wasted.",
+   844         choices: [
+   845           { text: "Your sacrifice won't be forgotten.", next: "farewell", questUpdat
+       e: "vexira_allied", morality: 5 }
+   846         ]
+   847       },
+   848       ritual_break_info: {
+   849         speech: "The pact stone is in the dragon's chamber — a black crystal embedde
+       d in a stone pedestal. Destroy it. The binding will unravel and the children will be
+        freed. Szartharrax will be furious, but weakened. It may be your only advantage.",
+   850         choices: [
+   851           { text: "Then it's time to end this.", next: "fight", triggerCombat: "vexi
+       ra_act3" }
+   852         ]
+   853       },
+   854       her_motivation: {
+   855         speech: "Power? Yes. But more than that — purpose. I was a beggar child in B
+       aldur's Gate. Nothing. Less than nothing. Szartharrax offered me power to reshape th
+       e world. To build something lasting. I took it. *simply* Wouldn't you?",
+   856         choices: [
+   857           { text: "At the cost of children's souls? No.", next: "children_challenge"
+       , morality: 3 },
+   858           { text: "Perhaps. But I'm stopping you anyway.", next: "fight", triggerCom
+       bat: "vexira_act3" }
+   859         ]
+   860       },
+   861       pact_stone_info: {
+   862         speech: "The pact stone? *smiles* It's in Szartharrax's personal chamber, de
+       ep in the Cloakwood. You'd have to get past me first. *raises staff* And you haven't
+        managed that yet.",
+   863         choices: [
+   864           { text: "Then let's settle this now.", next: "fight", triggerCombat: "vexi
+       ra_act3" }
+   865         ]
+   866       },
+   867       fight: {
+   868         speech: "*Voice rising with dark power* End of words, hero. Let's see if you
+       r steel is sharper than my magic.",
+   869         choices: []
+   870       },
+   871       final_boss_start: {
+   872         speech: "*at the dragon's side, but looks... diminished* You followed us her
+       e. I hoped you wouldn't. *glances at Szartharrax* My lord... the hero has arrived. *
+       to you, quietly* I'm sorry.",
+   873         choices: [
+   874           { text: "Stand down, Vexira. It doesn't have to end this way.", next: "fin
+       al_last_chance", morality: 3 },
+   875           { text: "Step aside or fall with the dragon.", next: "final_fight" }
+   876         ]
+   877       },
+   878       final_last_chance: {
+   879         speech: "*conflict clear on her face* I... *looks at the dragon* Szartharrax
+       . I cannot. *turns to face the dragon* I WILL NOT. *the dragon roars and the fight b
+       egins*",
+   880         choices: [],
+   881         triggerCombat: "final_boss",
+   882         vexiraDefects: true
+   883       },
+   884       final_fight: {
+   885         speech: "*steels herself* Then we all die here together.",
+   886         choices: [],
+   887         triggerCombat: "final_boss"
+   888       },
+   889       farewell: {
+   890         speech: "...",
+   891         choices: []
+   892       }
+   893     }
+   894   },
+   895   szartharrax: {
+   896     name: "Szartharrax", emoji: "🐉", title: "Young Black Dragon",
+   897     portrait: "🐉", faction: null,
+   898     states: {
+   899       first_encounter: {
+   900         speech: "*enormous black scales gleam in the darkness, acid vapor curling fr
+       om iron-black nostrils* So. The insects have arrived. You killed my servants. You di
+       srupted my ritual. *amusement in the deep resonant voice* Bold. Almost worthy of my
+       regard. Almost.",
+   901         choices: [
+   902           { text: "Your ritual ends here, dragon.", next: "defiant_approach" },
+   903           { text: "I'd rather talk than fight.", next: "parley_approach" },
+   904           { text: "[STR 16] I've faced worse than you.", next: "intimidate_attempt",
+        skillCheck: {skill:"str",dc:19} },
+   905           { text: "[CHA 18 + Morality 70+] Your deal with Vexira was flawed from the
+        start.", next: "clever_approach", skillCheck: {skill:"cha",dc:18}, moralityCheck: 7
+       0 }
+   906         ]
+   907       },
+   908       defiant_approach: {
+   909         speech: "*head lowers, eyes glowing with acid-green light* Ends here. How...
+        definitive. Very well. You have five seconds to reconsider. *pauses* Four. Three.",
+   910         choices: [
+   911           { text: "I'm not reconsidering. FIGHT!", next: "fight_initiate" },
+   912           { text: "[CHA] Wait — hear me out.", next: "parley_approach" }
+   913         ]
+   914       },
+   915       parley_approach: {
+   916         speech: "*long pause, studying you like a puzzle* Talk. A rare request. Very
+        well — you have until I grow bored, which has historically been quite soon. Speak y
+       our piece, small thing. I am... listening.",
+   917         choices: [
+   918           { text: "This ritual will bring armies to Neverwinter. Not peace.", next:
+       "power_argument" },
+   919           { text: "Vexira was using you, not serving you.", next: "vexira_argument"
+       },
+   920           { text: "What do you actually want from this deal?", next: "wants_question
+       " }
+   921         ]
+   922       },
+   923       power_argument: {
+   924         speech: "*narrows great eyes* Armies. *considering* The Lords' Alliance woul
+       d respond. Waterdeep. Perhaps even Silverymoon. *slowly* Yes. I had... not fully mod
+       eled that consequence. My ritual would paint a very visible target on this city. *da
+       ngerously quiet* Interesting point. Continue.",
+   925         choices: [
+   926           { text: "Fly north. The tundra has no armies.", next: "negotiate_flight",
+       morality: 0 },
+   927           { text: "Help us destroy the ritual and I'll keep your secret.", next: "se
+       cret_deal", morality: -5 }
+   928         ]
+   929       },
+   930       vexira_argument: {
+   931         speech: "Using me? *a rumble that might be laughter* All deals are mutual ex
+       ploitation. I am not naive. But... *thoughtful* she did conceal certain elements of
+       her plan from me. The scale of the backlash. The attention it would draw. Perhaps 'u
+       sing' is accurate. *a long silence* What do you suggest instead?",
+   932         choices: [
+   933           { text: "Walk away. Let us handle Vexira.", next: "negotiate_withdrawal" }
+       ,
+   934           { text: "Fly somewhere less... populated.", next: "negotiate_flight" }
+   935         ]
+   936       },
+   937       wants_question: {
+   938         speech: "What do I want? *genuinely considers* Power, obviously. But more sp
+       ecifically — I want a domain. Territory. Acknowledgment from lesser beings that I ex
+       ist and that I am not to be trifled with. A city under a dragon's thumb provides all
+        three... but so would a mountain range with no witnesses to offend.",
+   939         choices: [
+   940           { text: "The Spine of the World is yours for the taking.", next: "negotiat
+       e_flight", morality: 3 },
+   941           { text: "Stay and be acknowledged — as Neverwinter's protector, not its ty
+       rant.", next: "protector_deal", morality: 5, questCheck: "neverember_redeemed" }
+   942         ]
+   943       },
+   944       clever_approach: {
+   945         speech: "*very long silence* ...You know about that. The backlash calculatio
+       ns. *slowly* Vexira told me the ritual would be seamless. Clean. *the green light in
+        his eyes dims slightly* She did not mention the soul-fracture event at completion.
+       The one that would draw attention from every major power within five hundred miles.
+       You are... better informed than I expected.",
+   946         choices: [
+   947           { text: "Her ambition blinded her. She used you.", next: "vexira_argument"
+        },
+   948           { text: "We both want this city to survive. Work with us.", next: "protect
+       or_deal", morality: 5 }
+   949         ]
+   950       },
+   951       intimidate_attempt: {
+   952         speech: "*blink* Truly? *the acid breath barely misses you* No. But I respec
+       t the audacity. Fine — you have earned exactly thirty seconds of my genuine attentio
+       n before I finish what the breath started. Make it worthwhile.",
+   953         choices: [
+   954           { text: "Your ritual will bring armies. Think about it.", next: "power_arg
+       ument" },
+   955           { text: "I'll burn that stone before you complete anything.", next: "fight
+       _initiate" }
+   956         ]
+   957       },
+   958       intimidate_fail: {
+   959         speech: "*a sound like grinding stone — dragon laughter* You are small and b
+       rave and very, very foolish. *readies acid breath* I admire all three qualities. I s
+       imply won't let them save you.",
+   960         choices: [
+   961           { text: "FIGHT!", next: "fight_initiate" }
+   962         ]
+   963       },
+   964       negotiate_flight: {
+   965         speech: "The north. *considers* Cold. Remote. Prey that doesn't organize aga
+       inst you. *slowly stands to full height* You make... a surprisingly compelling argum
+       ent for someone who walked in here expecting to die. Very well. I accept. I will tak
+       e my leave of this southern foolishness. *warning* Do not make me regret this genero
+       sity.",
+   966         choices: [
+   967           { text: "You won't regret it.", next: "farewell", questUpdate: "dragon_fle
+       d", morality: 5, ending: "dragon_fled" },
+   968           { text: "I hope we never meet again.", next: "farewell", questUpdate: "dra
+       gon_fled", ending: "dragon_fled" }
+   969         ]
+   970       },
+   971       negotiate_withdrawal: {
+   972         speech: "*long consideration* Vexira... has become a liability. Her ambition
+        outstripped her usefulness. *the acid vapor thickens* Very well. I withdraw my supp
+       ort. Deal with her as you see fit. *turns* But know this: I will remember your face.
+        Should you ever venture north... I will be watching.",
+   973         choices: [
+   974           { text: "Fair enough.", next: "farewell", questUpdate: "dragon_neutral", e
+       nding: "dragon_neutral" }
+   975         ]
+   976       },
+   977       protector_deal: {
+   978         speech: "*silence stretches for a very long time* ...A protector. Not a tyra
+       nt. *considers* Neverwinter's history is full of so-called protectors who left the c
+       ity burning behind them. *long pause* I could do better. Genuinely. *finally* There
+       are... terms I would require.",
+   979         choices: [
+   980           { text: "Name them.", next: "protector_terms", morality: 3 }
+   981         ]
+   982       },
+   983       protector_terms: {
+   984         speech: "Annual tribute of gold and livestock. Acknowledgment of my territor
+       y in the Cloakwood. No armies within three miles of my lair. And... *surprising gent
+       leness* the children are freed. Unharmed. I want no innocent blood on my scales from
+        Vexira's foolishness.",
+   985         choices: [
+   986           { text: "Agreed. Neverwinter will honor these terms.", next: "farewell", q
+       uestUpdate: "dragon_protector", morality: 8, ending: "dragon_ally" },
+   987           { text: "I can't promise for the whole city.", next: "negotiate_withdrawal
+       " }
+   988         ]
+   989       },
+   990       secret_deal: {
+   991         speech: "*dangerous pause* You would cover for me. Hide what happened here.
+       In exchange for... what, precisely? You don't get something for nothing with a drago
+       n.",
+   992         choices: [
+   993           { text: "A city that doesn't know to fear you is safer for you.", next: "n
+       egotiate_withdrawal", morality: -8 },
+   994           { text: "I need the ritual ended. You need to not be hunted.", next: "nego
+       tiate_withdrawal", morality: -5 }
+   995         ]
+   996       },
+   997       fight_initiate: {
+   998         speech: "*the great jaws open, acid gathering like a dark star* As you wish.
+        CHILDREN OF NEVERWINTER, PRAY!",
+   999         choices: [],
+  1000         triggerCombat: "final_boss"
+  1001       },
+  1002       farewell: {
+  1003         speech: "...",
+  1004         choices: []
+  1005       }
+  1006     }
+  1007   }
+  1008 };
+  1009
+  1010 // Quest definitions
+  1011 const QUESTS_DB = {
+  1012   main_quest: {
+  1013     id: "main_quest", name: "Chronicles of the Sword Coast", type: "main",
+  1014     stages: [
+  1015       { id: "arrival", desc: "Arrive in Neverwinter and get your bearings." },
+  1016       { id: "investigation", desc: "Investigate the strange illness affecting the ch
+       ildren of Blacklake." },
+  1017       { id: "ruins", desc: "Find the Zhentarim base in the eastern ruins." },
+  1018       { id: "betrayal_revealed", desc: "Confront Lord Neverember about his involveme
+       nt." },
+  1019       { id: "final_assault", desc: "Assault the Dragon's Lair and stop Vexira's ritu
+       al." }
+  1020     ],
+  1021     currentStage: 0
+  1022   },
+  1023   sick_children: {
+  1024     id: "sick_children", name: "The Binding Curse", type: "side",
+  1025     stages: [
+  1026       { id: "learn_about", desc: "Learn more about the children's mysterious illness
+       ." },
+  1027       { id: "find_miri", desc: "Find Miri the healer in the Cloakwood." },
+  1028       { id: "get_ingredients", desc: "Gather Nightshade Bloom and Dragon Scale for M
+       iri." },
+  1029       { id: "make_draught", desc: "Have Miri craft the protective draught." },
+  1030       { id: "save_children", desc: "Administer the draught or stop the ritual." }
+  1031     ],
+  1032     currentStage: 0
+  1033   },
+  1034   tormund_rescue: {
+  1035     id: "tormund_rescue", name: "A Soldier's Debt", type: "side",
+  1036     stages: [
+  1037       { id: "find_tormund", desc: "Find the veteran soldier Tormund in the ruins dis
+       trict." },
+  1038       { id: "rescue", desc: "Help Tormund fight off the Zhentarim ambush." },
+  1039       { id: "recruit", desc: "Convince Tormund to join your cause." }
+  1040     ],
+  1041     currentStage: 0
+  1042   }
+  1043 };
+  1044
+╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌
+ Do you want to create swordcoast_part1.js?
+   1. Yes
+ > 2. Yes, allow all edits in this directory/ during this session (shift+tab)
+   3. No
+
+ Esc to cancel
+
+╭─── Claude Code v2.1.70 ────────────────────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting started              │
+│                Welcome back Joshua!                │ Run /init to create a CLAUDE.md file… │
+│                                                    │ ───────────────────────────────────── │
+│                                                    │ Recent activity                       │
+│                       ▐▛███▜▌                      │ No recent activity                    │
+│                      ▝▜█████▛▘                     │                                       │
+│                        ▘▘ ▝▝                       │                                       │
+│  Sonnet 4.6 · Claude Pro · jar32798@gmail.com's    │                                       │
+│  Organization                                      │                                       │
+│ C:\Users\joshu_w0zb8cp\OneDrive - Dubbo Christian… │                                       │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+
+  ✻ Voice mode is now available · /voice to enable
+
+> hello
+
+● Hey. What you need?
+
+> look for DNDGAME.txt
+
+● Searched for 1 pattern (ctrl+o to expand)
+
+● Timeout — too many files to scan from root. Give me more specific folder to search in, or
+  know approximate location?
+
+✻ Worked for 31s
+
+> It is here C:\DNDGAME.txt
+
+● Read 1 file (ctrl+o to expand)
+
+● Found it. Partial DND 5e game built as single HTML file — "Chronicles of the Sword Coast."
+
+  File notes:
+  - Has CSS, character creation, combat engine, spells DB, NPC/quest data, dialogue trees for
+  4 NPCs
+  - Missing: Whisper, Neverember, Vexira, Tormund, Miri NPCs; location encounters; crafting
+  system; final boss
+
+  What you want to do with it?
+
+> make it playable
+
+● Need to read full file first.
+
+● Read 1 file (ctrl+o to expand)
+
+● File is 294 lines, cut off mid-tag. Need to build the complete game from scratch using the
+  existing CSS. Writing full swordcoast.html now — this is large.
+
+● Agent(Write complete DND browser game HTML)
+  ⎿  Bash(sleep 3 && cat "C:\Users\joshu\AppData\Local\Temp\claude\C--Users-joshu-w0zb8cp-OneD         rive---Dubbo-Christian-School-Documents-03-Projects\tasks\biij5y14q.output")
+     Running…                                                                                      Bash(powershell.exe -Command "'test' | Out-File -FilePath 'C:\test_write.txt'; if
+         (Test-Path 'C:\test_write.txt') { Write-Host 'SUCCESS'; Remove-Item 'C:\test_write.…)     Running…
+     Bash(powershell.exe -Command "                                                                    \$html = @'…)
+     Running…
+     +6 more tool uses (ctrl+o to expand)
+     ctrl+b to run in background
+
+────────────────────────────────────────────────────────────────────────────────────────────── Bash command
+                                                                                                 powershell.exe -Command "
+   \$html = @'                                                                                   <!DOCTYPE html>
+●  <html lang=\"en\">
+   <head> pow rshell.exe - ommand "
+         \$html = @'…)                                                                        
+
+         Set-Content -Path 'C:\swordcoast.html' -Value '<!DOCTYPE html>' -Encoding UTF8…)
+
+                          N Profile -Command @"
+         `$css = @'…)
+
+      8
+
+
+────────────────────────────────────────────────────────────────────────────────────────────── Bash command
+
+   powershell.exe -NoProfile -Command @"                                                         `$css = @'
+   <style>                                                                                       *{margin:0;padding:0;box-sizing:border-box}
+   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cri
+   mson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+   :root{
+   --bg-dark:#0a0a12;--bg-panel:#12121f;--bg-card:#1a1a2e;--bg-hover:#242440;
+   --gold:#d4a843;--gold-dim:#8a6d2b;--gold-bright:#f0d060;
+   --blue:#3a7bd5;--blue-dim:#1e3a5f;--blue-bright:#5e9eff;
+   --red:#c0392b;--red-dim:#6b1d13;--green:#27ae60;--green-dim:#1a6b3c;
+   --purple:#8e44ad;--purple-dim:#4a235a;
+   --text:#e8dcc8;--text-dim:#8a8070;--text-bright:#fff8e7;
+   --parchment:#2a2520;--parchment-light:#3a3530;
+   --border:#3a3530;--border-gold:#5a4a2a;
+   --font-title:'Cinzel',serif;--font-body:'Crimson Text',serif;
+   --radius:6px;--shadow:0 4px 20px rgba(0,0,0,0.5);
+   }
+   html,body{height:100%;background:var(--bg-dark);color:var(--text);font-family:var(--font
+   -body);font-size:17px;line-height:1.6;overflow:hidden}
+   #app{height:100vh;display:flex;flex-direction:column;overflow:hidden}
+   ::-webkit-scrollbar{width:8px}
+   ::-webkit-scrollbar-track{background:var(--bg-dark)}
+   ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:4px}
+   ::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+   .btn{font-family:var(--font-title);font-size:14px;padding:10px 20px;border:1px solid
+   var(--gold-dim);background:linear-gradient(180deg,var(--bg-card),var(--bg-dark));color:v
+   ar(--gold);border-radius:var(--radius);cursor:pointer;transition:all
+   .2s;text-transform:uppercase;letter-spacing:1px}
+   .btn:hover{background:linear-gradient(180deg,var(--bg-hover),var(--bg-card));border-colo
+   r:var(--gold);color:var(--gold-bright);transform:translateY(-1px);box-shadow:0 2px 10px
+   rgba(212,168,67,.2)}
+   .btn:active{transform:translateY(0)}
+   .btn-primary{background:linear-gradient(180deg,var(--gold-dim),#5a3a10);color:var(--text
+   -bright);border-color:var(--gold)}
+   .btn-primary:hover{background:linear-gradient(180deg,var(--gold),var(--gold-dim));color:
+   #1a1a2e}
+   .btn-danger{border-color:var(--red-dim);color:var(--red)}
+   .btn-danger:hover{border-color:var(--red);background:var(--red-dim);color:#fff}
+   .btn-sm{padding:6px 12px;font-size:12px}
+   .btn-lg{padding:14px 28px;font-size:16px}
+   .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+   .btn-group{display:flex;gap:8px;flex-wrap:wrap}
+   #title-screen{display:flex;flex-direction:column;align-items:center;justify-content:cent
+   er;height:100vh;text-align:center;background:radial-gradient(ellipse at center,#1a1a3e
+   0%,#0a0a12 70%);position:relative;overflow:hidden}
+   #title-screen::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;backgro
+   und:url("data:image/svg+xml,%3Csvg width='60' height='60'
+   xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none'
+   stroke='%23d4a84310' stroke-width='0.5'/%3E%3C/svg%3E");opacity:.3}
+   .title-main{font-family:var(--font-title);font-size:3.5em;color:var(--gold);text-shadow:
+   0 0 40px rgba(212,168,67,.3);margin-bottom:10px;position:relative;z-index:1}
+   .title-sub{font-family:var(--font-title);font-size:1.4em;color:var(--text-dim);margin-bo
+   ttom:40px;position:relative;z-index:1;letter-spacing:3px}
+   .title-divider{width:300px;height:1px;background:linear-gradient(90deg,transparent,var(-
+   -gold-dim),transparent);margin:0 auto 30px;position:relative;z-index:1}
+   .title-buttons{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1;a
+   lign-items:center}
+   .title-flavor{position:absolute;bottom:30px;font-style:italic;color:var(--text-dim);font
+   -size:.9em;z-index:1;font-family:var(--font-body)}
+   #char-creation{display:none;height:100vh;overflow-y:auto;padding:20px;background:var(--b
+   g-dark)}
+   .cc-container{max-width:900px;margin:0 auto}
+   .cc-header{text-align:center;margin-bottom:30px;padding:30px 0}
+   .cc-header
+   h1{font-family:var(--font-title);color:var(--gold);font-size:2em;margin-bottom:8px}
+   .cc-header p{color:var(--text-dim);font-style:italic}
+   .cc-section{background:var(--bg-panel);border:1px solid
+   var(--border);border-radius:var(--radius);padding:20px;margin-bottom:20px}
+   .cc-section h2{font-family:var(--font-title);color:var(--gold);font-size:1.2em;margin-bo
+   ttom:15px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+   .cc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px
+   }
+   .cc-option{background:var(--bg-card);border:2px solid
+   var(--border);border-radius:var(--radius);padding:12px;cursor:pointer;transition:all
+   .2s;text-align:center}
+   .cc-option:hover{border-color:var(--gold-dim);background:var(--bg-hover)}
+   .cc-option.selected{border-color:var(--gold);background:var(--bg-hover);box-shadow:0 0
+   15px rgba(212,168,67,.15)}
+   .cc-option
+   .name{font-family:var(--font-title);color:var(--gold);font-size:1em;margin-bottom:4px}
+   .cc-option .desc{font-size:.82em;color:var(--text-dim);line-height:1.4}
+   .cc-option
+   .traits{font-size:.78em;color:var(--blue-bright);margin-top:4px;font-style:italic}
+   .cc-abilities{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+   .cc-ability{background:var(--bg-card);border:1px solid
+   var(--border);border-radius:var(--radius);padding:12px;text-align:center}
+   .cc-ability .label{font-family:var(--font-title);color:var(--gold);font-size:.8em;text-t
+   ransform:uppercase;letter-spacing:1px}
+   .cc-ability .score{font-size:2.2em;color:var(--text-bright);font-weight:700;line-height:
+   1.2;margin:4px 0}
+   .cc-ability .mod{font-size:1.1em;color:var(--blue-bright)}
+   .cc-ability .racial{font-size:.75em;color:var(--green);margin-top:2px}
+   .cc-ability
+   .controls{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:8px}
+   .cc-ability .ctrl-btn{width:28px;height:28px;border-radius:50%;border:1px solid
+   var(--gold-dim);background:var(--bg-dark);color:var(--gold);cursor:pointer;font-size:1.1
+   em;display:flex;align-items:center;justify-content:center;line-height:1;transition:all
+   .2s}
+   .cc-ability .ctrl-btn:hover{background:var(--gold-dim);color:var(--text-bright)}
+   .cc-ability .base-score{font-size:.9em;color:var(--text-dim);min-width:20px}
+   label{display:block;font-family:var(--font-title);color:var(--gold);font-size:.85em;marg
+   in-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+   input[type="text"],textarea,select{width:100%;padding:10px
+   12px;background:var(--bg-card);border:1px solid
+   var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body)
+   ;font-size:1em;outline:none;transition:border .2s}
+   input[type="text"]:focus,textarea:focus,select:focus{border-color:var(--gold)}
+   textarea{resize:vertical;min-height:80px;line-height:1.6}
+   select{cursor:pointer;-webkit-appearance:none}
+   .points-display{font-family:var(--font-title);color:var(--gold-bright);font-size:1.1em;t
+   ext-align:center;padding:10px;background:var(--bg-card);border-radius:var(--radius);marg
+   in-bottom:12px;border:1px solid var(--border-gold)}
+   .cc-preview{background:linear-gradient(135deg,var(--bg-card),var(--parchment));border:1p
+   x solid var(--gold-dim);border-radius:var(--radius);padding:20px;margin-top:20px}
+   .cc-preview
+   h3{font-family:var(--font-title);color:var(--gold);font-size:1.3em;margin-bottom:12px}
+   .preview-stat{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px
+    solid var(--border);font-size:.9em}
+   .preview-stat .val{color:var(--text-bright)}
+   #game-screen{display:none;height:100vh;flex-direction:column}
+   .game-header{background:var(--bg-panel);border-bottom:2px solid
+   var(--border-gold);padding:8px
+   16px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+   .game-header
+   .location-display{font-family:var(--font-title);color:var(--gold);font-size:.95em}
+   .game-header .char-brief{color:var(--text-dim);font-size:.85em}
+   .header-btns{display:flex;gap:6px}
+   .game-body{display:flex;flex:1;overflow:hidden}
+   .game-main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+   .narrative-panel{flex:1;overflow-y:auto;padding:20px 25px;background:var(--bg-dark)}
+   .narrative-text{max-width:750px;margin:0 auto}
+   .narrative-text .entry{margin-bottom:16px;animation:fadeIn .4s ease}
+   .narrative-text .prose{color:var(--text);line-height:1.8;font-size:1.05em}
+   .narrative-text
+   .dialogue{color:var(--blue-bright);font-style:italic;padding-left:15px;border-left:2px
+   solid var(--blue-dim);line-height:1.7}
+   .narrative-text
+   .system{color:var(--text-dim);font-size:.9em;font-style:italic;padding:6px
+   12px;border-left:2px solid var(--border)}
+   .narrative-text .roll-result{background:var(--bg-panel);border:1px solid
+   var(--border);border-radius:var(--radius);padding:10px
+   14px;font-family:var(--font-title);color:var(--gold);font-size:.9em}
+   .narrative-text .combat-msg{color:var(--red);font-weight:600}
+   .narrative-text .success{color:var(--green)}
+   .narrative-text .failure{color:var(--red)}
+   .narrative-text .loot{color:var(--gold-bright);font-style:italic}
+   .narrative-text .xp-gain{color:var(--purple);font-family:var(--font-title);font-size:.9e
+   m;letter-spacing:1px}
+   .narrative-text .chapter{text-align:center;padding:20px 0;font-family:var(--font-title)}
+   @keyframes
+   fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+   .action-panel{background:var(--bg-panel);border-top:2px solid
+   var(--border-gold);padding:12px 20px;flex-shrink:0;min-height:70px}
+   .action-panel .actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-wi
+   dth:750px;margin:0 auto}
+   .game-sidebar{width:320px;background:var(--bg-panel);border-left:1px solid var(--border)
+   ;overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column;transition:all .3s}
+   .sidebar-tabs{display:flex;border-bottom:1px solid
+   var(--border);flex-shrink:0;background:var(--bg-dark)}
+   .sidebar-tab{flex:1;padding:10px 4px;text-align:center;font-family:var(--font-title);fon
+   t-size:.7em;color:var(--text-dim);cursor:pointer;border-bottom:2px solid
+   transparent;text-transform:uppercase;letter-spacing:.5px;transition:all .2s}
+   .sidebar-tab:hover{color:var(--text)}
+   .sidebar-tab.active{color:var(--gold);border-bottom-color:var(--gold);background:var(--b
+   g-panel)}
+   .sidebar-content{flex:1;overflow-y:auto;padding:15px}
+   .sidebar-panel{display:none}
+   .sidebar-panel.active{display:block}
+   .cs-name{font-family:var(--font-title);color:var(--gold);font-size:1.2em;margin-bottom:2
+   px}
+   .cs-info{color:var(--text-dim);font-size:.82em;margin-bottom:12px;font-style:italic}
+   .cs-hp{margin-bottom:15px}
+   .hp-bar{height:20px;background:var(--bg-dark);border-radius:10px;overflow:hidden;border:
+   1px solid var(--border);position:relative}
+   .hp-fill{height:100%;transition:width .3s;border-radius:10px}
+   .hp-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:v
+   ar(--font-title);font-size:.72em;color:var(--text-bright);text-shadow:0 1px 3px
+   #000;white-space:nowrap}
+   .cs-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:12px}
+   .cs-stat{background:var(--bg-card);border:1px solid
+   var(--border);border-radius:var(--radius);padding:7px;text-align:center}
+   .cs-stat .stat-name{font-family:var(--font-title);font-size:.6em;color:var(--gold);text-
+   transform:uppercase;letter-spacing:1px}
+   .cs-stat
+   .stat-val{font-size:1.4em;color:var(--text-bright);font-weight:700;line-height:1.2}
+   .cs-stat .stat-mod{font-size:.8em;color:var(--blue-bright)}
+   .cs-section-title{font-family:var(--font-title);color:var(--gold);font-size:.82em;margin
+   :12px 0 6px;padding-bottom:4px;border-bottom:1px solid
+   var(--border);letter-spacing:1px;text-transform:uppercase}
+   .cs-detail{display:flex;justify-content:space-between;padding:3px
+   0;font-size:.85em;border-bottom:1px solid rgba(58,53,48,.3)}
+   .cs-detail .val{color:var(--text-bright)}
+   .spell-slot-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:.85e
+   m}
+   .spell-slot{width:18px;height:18px;border-radius:50%;border:2px solid
+   var(--purple);display:inline-flex;align-items:center;justify-content:center;font-size:.5
+   5em;cursor:default;transition:all .2s}
+   .spell-slot.used{background:var(--bg-dark);border-color:var(--purple-dim);opacity:.4}
+   .spell-slot.available{background:var(--purple);color:#fff}
+   .condition-tag{display:inline-block;padding:2px 7px;border-radius:10px;font-size:.72em;m
+   argin:2px;font-family:var(--font-title);text-transform:uppercase;letter-spacing:.5px}
+   .condition-tag.poisoned{background:#1a3d1a;color:#8fdf8f;border:1px solid #2d5a2d}
+   .condition-tag.frightened{background:#3d1a3d;color:#df8fdf;border:1px solid #5a2d5a}
+   .condition-tag.restrained{background:#3d3d1a;color:#dfdf8f;border:1px solid #5a5a2d}
+   .condition-tag.stunned{background:#1a1a3d;color:#8f8fdf;border:1px solid #2d2d5a}
+   .condition-tag.prone{background:#3d2a1a;color:#dfbf8f;border:1px solid #5a3d2d}
+   .condition-tag.paralyzed{background:#3d1a1a;color:#df8f8f;border:1px solid #5a2d2d}
+   .inv-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r
+   adius);padding:10px;margin-bottom:6px;cursor:pointer;transition:all .2s}
+   .inv-item:hover{border-color:var(--gold-dim);background:var(--bg-hover)}
+   .inv-item .item-name{color:var(--text-bright);font-weight:600;margin-bottom:2px}
+   .inv-item .item-name.common{color:var(--text)}
+   .inv-item .item-name.uncommon{color:var(--green)}
+   .inv-item .item-name.rare{color:var(--blue-bright)}
+   .inv-item .item-name.very-rare{color:var(--purple)}
+   .inv-item .item-name.legendary{color:var(--gold-bright)}
+   .inv-item
+   .item-desc{font-size:.83em;color:var(--text-dim);margin-top:2px;line-height:1.4}
+   .inv-item .item-type{font-size:.72em;color:var(--gold-dim);text-transform:uppercase;font
+   -family:var(--font-title);letter-spacing:.5px;margin-bottom:2px}
+   .quest-entry{background:var(--bg-card);border:1px solid
+   var(--border);border-radius:var(--radius);padding:12px;margin-bottom:8px;transition:all
+   .2s}
+   .quest-entry.active{border-left:3px solid var(--gold)}
+   .quest-entry.completed{border-left:3px solid var(--green);opacity:.7}
+   .quest-entry .quest-name{font-family:var(--font-title);color:var(--gold);font-size:.9em;
+   margin-bottom:4px}
+   .quest-entry
+   .quest-desc{font-size:.82em;color:var(--text-dim);margin-bottom:6px;line-height:1.4}
+   .quest-entry .quest-stage{font-size:.8em;color:var(--blue-bright);padding:4px
+   8px;background:var(--bg-panel);border-radius:3px}
+   .dice-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(
+   0,0,0,.75);z-index:1000;align-items:center;justify-content:center}
+   .dice-overlay.show{display:flex}
+   .dice-box{background:linear-gradient(135deg,var(--bg-panel),var(--parchment));border:2px
+    solid var(--gold);border-radius:12px;padding:30px
+   50px;text-align:center;animation:diceAppear .3s ease;min-width:220px}
+   .dice-formula{font-family:var(--font-title);color:var(--text-dim);font-size:1em;margin-b
+   ottom:10px;letter-spacing:1px}
+   .dice-result{font-family:var(--font-title);font-size:3.5em;color:var(--gold-bright);text
+   -shadow:0 0 20px rgba(212,168,67,.4);line-height:1;margin:10px 0}
+   .dice-detail{font-size:.88em;color:var(--text-dim);margin-top:8px;font-style:italic}
+   .dice-result.crit{color:var(--gold-bright);animation:critPulse .4s ease 3}
+   .dice-result.nat-fail{color:var(--red)}
+   @keyframes diceAppear{from{transform:scale(.4)
+   rotate(-15deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+   @keyframes critPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15);text-shadow:0
+   0 40px rgba(240,208,96,.8)}}
+   #combat-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgb
+   a(10,10,18,.97);z-index:500;flex-direction:column}
+   #combat-overlay.show{display:flex}
+   .combat-header{background:linear-gradient(90deg,var(--bg-panel),var(--red-dim),var(--bg-
+   panel));border-bottom:2px solid var(--red-dim);padding:10px
+   20px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+   .combat-header
+   h2{font-family:var(--font-title);color:var(--red);font-size:1.2em;letter-spacing:2px}
+   .combat-round-info{font-family:var(--font-title);color:var(--gold);font-size:.9em}
+   .combat-body{display:flex;flex:1;overflow:hidden}
+   .combat-field{flex:1;padding:20px;overflow-y:auto}
+   .combat-log-panel{width:280px;background:var(--bg-panel);border-left:1px solid
+   var(--border);overflow-y:auto;padding:10px;font-size:.82em;flex-shrink:0}
+   .combat-log-panel h3{font-family:var(--font-title);color:var(--red);font-size:.8em;margi
+   n-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+   .log-entry{padding:5px 0;border-bottom:1px solid
+   rgba(58,53,48,.4);line-height:1.4;color:var(--text-dim)}
+   .log-entry strong{font-weight:600}
+   .initiative-order{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;padding-bottom:
+   15px;border-bottom:1px solid var(--border)}
+   .init-token{background:var(--bg-card);border:2px solid
+   var(--border);border-radius:var(--radius);padding:8px
+   12px;text-align:center;min-width:90px;transition:all .3s}
+   .init-token.active{border-color:var(--gold);box-shadow:0 0 15px
+   rgba(212,168,67,.25);background:var(--bg-hover)}
+   .init-token.type-enemy{border-color:var(--red-dim)}
+   .init-token.type-player{border-color:var(--blue-dim)}
+   .init-token.type-companion{border-color:var(--green-dim)}
+   .init-token .token-name{font-family:var(--font-title);font-size:.75em;color:var(--text-b
+   right);margin-bottom:2px}
+   .init-token .token-hp{font-size:.7em;color:var(--text-dim)}
+   .init-token .token-init{font-size:.65em;color:var(--gold-dim)}
+   .enemy-display{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));ga
+   p:10px;margin-bottom:20px}
+   .enemy-card{background:var(--bg-card);border:1px solid
+   var(--red-dim);border-radius:var(--radius);padding:14px;transition:all .3s}
+   .enemy-card.dead{opacity:.3;border-color:var(--border);filter:grayscale(1)}
+   .enemy-card .enemy-name{font-family:var(--font-title);color:var(--red);font-size:.95em;m
+   argin-bottom:4px}
+   .enemy-card .enemy-stats{font-size:.82em;color:var(--text-dim);margin-bottom:6px}
+   .enemy-card .enemy-desc{font-size:.8em;color:var(--text-dim);font-style:italic;line-heig
+   ht:1.4;margin-top:6px}
+   .combat-actions-bar{background:linear-gradient(180deg,var(--bg-panel),var(--bg-dark));bo
+   rder-top:2px solid var(--border);padding:12px
+   20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;flex-shrink:0}
+   .combat-target-select{font-family:var(--font-body);padding:6px
+   10px;background:var(--bg-card);color:var(--text);border:1px solid
+   var(--border);border-radius:var(--radius);cursor:pointer;font-size:.9em}
+   .modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba
+   (0,0,0,.75);z-index:2000;align-items:center;justify-content:center}
+   .modal-overlay.show{display:flex}
+   .modal{background:linear-gradient(135deg,var(--bg-panel),var(--parchment));border:1px
+   solid var(--gold-dim);border-radius:var(--radius);padding:25px;max-width:480px;width:90%
+   ;max-height:80vh;overflow-y:auto;box-shadow:var(--shadow)}
+   .modal
+   h2{font-family:var(--font-title);color:var(--gold);margin-bottom:12px;font-size:1.2em}
+   .modal p{color:var(--text);margin-bottom:15px;line-height:1.6}
+   .rest-options{display:flex;gap:10px;flex-wrap:wrap}
+   .spell-entry{background:var(--bg-card);border:1px solid
+   var(--border);border-radius:var(--radius);padding:10px;margin-bottom:6px}
+   .spell-entry .spell-name{font-family:var(--font-title);color:var(--purple);font-size:.92
+   em;margin-bottom:2px}
+   .spell-entry .spell-school{font-size:.72em;color:var(--text-dim);text-transform:uppercas
+   e;letter-spacing:.5px;margin-bottom:4px}
+   .spell-entry
+   .spell-desc{font-size:.82em;color:var(--text-dim);line-height:1.4;margin-bottom:4px}
+   .spell-entry .spell-meta{font-size:.75em;color:var(--gold-dim);font-style:italic}
+   .dialogue-box{background:linear-gradient(135deg,var(--bg-card),var(--parchment));border:
+   1px solid var(--border-gold);border-radius:var(--radius);padding:16px;margin:10px 0}
+   .dialogue-speaker-row{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+   .npc-portrait{width:56px;height:56px;border-radius:50%;border:2px solid
+   var(--gold-dim);background:var(--bg-dark);display:flex;align-items:center;justify-conten
+   t:center;font-size:1.8em;flex-shrink:0}
+   .dialogue-speaker-name{font-family:var(--font-title);color:var(--gold);font-size:.95em;m
+   argin-bottom:2px}
+   .dialogue-speaker-info{font-size:.75em;color:var(--text-dim);font-style:italic}
+   .dialogue-speech{color:var(--text);line-height:1.7;padding:10px 0;font-size:1em}
+   .dialogue-choices{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+   .dialogue-choice{background:var(--bg-panel);border:1px solid
+   var(--border);border-radius:var(--radius);padding:10px
+   14px;cursor:pointer;transition:all .2s;text-align:left;color:var(--text);font-family:var
+   (--font-body);font-size:.95em;width:100%}
+   .dialogue-choice:hover{border-color:var(--gold);background:var(--bg-hover);color:var(--g
+   old-bright);transform:translateX(3px)}
+   .dialogue-choice .skill-tag{font-size:.72em;color:var(--purple);text-transform:uppercase
+   ;font-family:var(--font-title);margin-right:5px;letter-spacing:.5px;padding:1px
+   5px;background:var(--purple-dim);border-radius:3px}
+   .morality-bar{height:8px;background:linear-gradient(90deg,#8b0000,#666,#1a5c2a);border-r
+   adius:4px;position:relative;margin:6px 0;border:1px solid var(--border)}
+   .morality-marker{position:absolute;top:-5px;width:16px;height:16px;background:var(--gold
+   );border-radius:50%;border:2px solid
+   var(--text-bright);transform:translateX(-50%);transition:left .5s;box-shadow:0 0 8px
+   rgba(212,168,67,.5)}
+   .death-saves-display{display:flex;gap:20px;justify-content:center;margin:8px 0}
+   .ds-group{display:flex;align-items:center;gap:4px;font-size:.8em}
+   .ds-pip{width:14px;height:14px;border-radius:50%;border:2px solid
+   var(--border);display:inline-block}
+   .ds-pip.success{background:var(--green);border-color:var(--green)}
+   .ds-pip.failure{background:var(--red);border-color:var(--red)}
+   .sound-controls{position:fixed;bottom:15px;right:15px;z-index:100;display:flex;flex-dire
+   ction:column;gap:4px}
+   .sound-btn{background:var(--bg-panel);border:1px solid
+   var(--border);border-radius:20px;padding:5px
+   12px;font-size:.78em;cursor:pointer;color:var(--text-dim);transition:all
+   .2s;font-family:var(--font-body)}
+   .sound-btn:hover{border-color:var(--gold);color:var(--gold)}
+   .sound-btn.active{background:var(--gold-dim);color:var(--text-bright);border-color:var(-
+   -gold)}
+   .shop-item{background:var(--bg-card);border:1px solid
+   var(--border);border-radius:var(--radius);padding:10px;margin-bottom:8px;display:flex;ju
+   stify-content:space-between;align-items:center}
+   .shop-item .item-info .name{color:var(--text-bright);font-weight:600;font-size:.95em}
+   .shop-item .item-info .desc{color:var(--text-dim);font-size:.82em;margin-top:2px}
+   .shop-item .cost{font-family:var(--font-title);color:var(--gold);font-size:.9em;white-sp
+   ace:nowrap;margin-left:10px}
+   .faction-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.72em;f
+   ont-family:var(--font-title);text-transform:uppercase;letter-spacing:.5px}
+   .faction-badge.harpers{background:#1a2a3a;color:#6ab4ff;border:1px solid #2a4a6a}
+   .faction-badge.zhentarim{background:#2a1a1a;color:#ff9a6a;border:1px solid #5a2a2a}
+   .faction-badge.lords{background:#2a2a1a;color:#ffe06a;border:1px solid #5a5a2a}
+   .faction-badge.enclave{background:#1a2a1a;color:#6aff9a;border:1px solid #2a5a2a}
+   .faction-badge.gauntlet{background:#2a1a2a;color:#ff6adf;border:1px solid #5a2a5a}
+   @media(max-width:768px){
+     .game-sidebar{position:fixed;right:-320px;top:0;bottom:0;z-index:400;transition:right
+   .3s;box-shadow:var(--shadow)}
+     .game-sidebar.open{right:0}
+     .title-main{font-size:2.2em}
+     .cc-abilities{grid-template-columns:repeat(2,1fr)}
+     .cc-grid{grid-template-columns:repeat(2,1fr)}
+     .combat-log-panel{display:none}
+   }
+   </style>
+   '@
+   Add-Content -Path 'C:\swordcoast.html' -Value `$css -Encoding UTF8
+   Write-Host 'CSS written'
+   "@
+   Write CSS section to swordcoast.html
+
+ Command contains a quoted newline followed by a #-prefixed line, which can hide arguments
+ from line-based permission checks
+
+ Do you want to proceed?
+ > 1. Yes
+   2. No
+
+ Esc to cancel · Tab to amend · ctrl+e to explain
+
+╭─── Claude Code v2.1.70 ────────────────────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting started              │
+│                Welcome back Joshua!                │ Run /init to create a CLAUDE.md file… │
+│                                                    │ ───────────────────────────────────── │
+│                                                    │ Recent activity                       │
+│                       ▐▛███▜▌                      │ No recent activity                    │
+│                      ▝▜█████▛▘                     │                                       │
+│                        ▘▘ ▝▝                       │                                       │
+│  Sonnet 4.6 · Claude Pro · jar32798@gmail.com's    │                                       │
+│  Organization                                      │                                       │
+│ C:\Users\joshu_w0zb8cp\OneDrive - Dubbo Christian… │                                       │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+
+  ✻ Voice mode is now available · /voice to enable
+
+> hello
+
+● Hey. What you need?
+
+> look for DNDGAME.txt
+
+● Searched for 1 pattern (ctrl+o to expand)
+
+● Timeout — too many files to scan from root. Give me more specific folder to search in, or
+  know approximate location?
+
+✻ Worked for 31s
+
+> It is here C:\DNDGAME.txt
+
+● Read 1 file (ctrl+o to expand)
+
+● Found it. Partial DND 5e game built as single HTML file — "Chronicles of the Sword Coast."
+
+  File notes:
+  - Has CSS, character creation, combat engine, spells DB, NPC/quest data, dialogue trees for
+  4 NPCs
+  - Missing: Whisper, Neverember, Vexira, Tormund, Miri NPCs; location encounters; crafting
+  system; final boss
+
+  What you want to do with it?
+
+> make it playable
+
+● Need to read full file first.
+
+● Read 1 file (ctrl+o to expand)
+
+● File is 294 lines, cut off mid-tag. Need to build the complete game from scratch using the
+  existing CSS. Writing full swordcoast.html now — this is large.
+
+● Agent(Write complete DND browser game HTML)
+  ⎿  Bash(powershell.exe -Command "
+         Set-Content -Path 'C:\swordcoast.html' -Value '<!DOCTYPE html>' -Encoding UTF8…)
+     Running…
+     Bash(powershell.exe -NoProfile -Command @"
+         `$css = @'…)
+     Running…
+     Bash(cat > /tmp/write_css.ps1 << 'PSEOF'
+         $css = @"…)
+     Running…
+     +9 more tool uses (ctrl+o to expand)
+     ctrl+b to run in background
+
+────────────────────────────────────────────────────────────────────────────────────────────── Bash command
+
+   cat > /tmp/write_css.ps1 << 'PSEOF'                                                           $css = @"
+   <style>                                                                                       *{margin:0;padding:0;box-sizing:border-box}
+   @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cri
+   mson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+   :root{
+   --bg-dark:#0a0a12;--bg-panel:#12121f;--bg-card:#1a1a2e;--bg-hover:#242440;
+   --gold:#d4a843;--gold-dim:#8a6d2b;--gold-bright:#f0d060;
+   --blue:#3a7bd5;--blue-dim:#1e3a5f;--blue-bright:#5e9eff;
+   --red:#c0392b;--red-dim:#6b1d13;--green:#27ae60;--green-dim:#1a6b3c;
+   --purple:#8e44ad;--purple-dim:#4a235a;
+   --text:#e8dcc8;--text-dim:#8a8070;--text-bright:#fff8e7;
+   --parchment:#2a2520;--parchment-light:#3a3530;
+   --border:#3a3530;--border-gold:#5a4a2a;
+   --font-title:'Cinzel',serif;--font-body:'Crimson Text',serif;
+   --radius:6px;--shadow:0 4px 20px rgba(0,0,0,0.5);
+   }
+   html,body{height:100%;background:var(--bg-dark);color:var(--text);font-family:var(--font
+   -body);font-size:17px;line-height:1.6;overflow:hidden}
+   #app{height:100vh;display:flex;flex-direction:column;overflow:hidden}
+   ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg-dark)}::-web
+   kit-scrollbar-thumb{background:var(--gold-dim);border-radius:4px}::-webkit-scrollbar-thu
+   mb:hover{background:var(--gold)}
+   .btn{font-family:var(--font-title);font-size:14px;padding:10px 20px;border:1px solid
+   var(--gold-dim);background:linear-gradient(180deg,var(--bg-card),var(--bg-dark));color:v
+   ar(--gold);border-radius:var(--radius);cursor:pointer;transition:all
+   .2s;text-transform:uppercase;letter-spacing:1px}
+   .btn:hover{background:linear-gradient(180deg,var(--bg-hover),var(--bg-card));border-colo
+   r:var(--gold);color:var(--gold-bright);transform:translateY(-1px);box-shadow:0 2px 10px
+   rgba(212,168,67,.2)}
+   .btn:active{transform:translateY(0)}
+   .btn-primary{background:linear-gradient(180deg,var(--gold-dim),#5a3a10);color:var(--text
+   -bright);border-color:var(--gold)}
+   .btn-primary:hover{background:linear-gradient(180deg,var(--gold),var(--gold-dim));color:
+   #1a1a2e}
+   .btn-danger{border-color:var(--red-dim);color:var(--red)}.btn-danger:hover{border-color:
+   var(--red);background:var(--red-dim);color:#fff}
+   .btn-sm{padding:6px 12px;font-size:12px}.btn-lg{padding:14px
+   28px;font-size:16px}.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}.btn-grou
+   p{display:flex;gap:8px;flex-wrap:wrap}
+   #title-screen{display:flex;flex-direction:column;align-items:center;justify-content:cent
+   er;height:100vh;text-align:center;background:radial-gradient(ellipse at center,#1a1a3e
+   0%,#0a0a12 70%);position:relative;overflow:hidden}
+   #title-screen::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;backgro
+   und:url("data:image/svg+xml,%3Csvg width='60' height='60'
+   xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none'
+   stroke='%23d4a84310' stroke-width='0.5'/%3E%3C/svg%3E");opacity:.3}
+   .title-main{font-family:var(--font-title);font-size:3.5em;color:var(--gold);text-shadow:
+   0 0 40px rgba(212,168,67,.3);margin-bottom:10px;position:relative;z-index:1}
+   .title-sub{font-family:var(--font-title);font-size:1.4em;color:var(--text-dim);margin-bo
+   ttom:40px;position:relative;z-index:1;letter-spacing:3px}
+   .title-divider{width:300px;height:1px;background:linear-gradient(90deg,transparent,var(-
+   -gold-dim),transparent);margin:0 auto 30px;position:relative;z-index:1}
+   .title-buttons{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1;a
+   lign-items:center}
+   .title-flavor{position:absolute;bottom:30px;font-style:italic;color:var(--text-dim);font
+   -size:.9em;z-index:1;font-family:var(--font-body)}
+   #char-creation{display:none;height:100vh;overflow-y:auto;padding:20px;background:var(--b
+   g-dark)}
+   .cc-container{max-width:900px;margin:0 auto}
+   .cc-header{text-align:center;margin-bottom:30px;padding:30px 0}
+   .cc-header
+   h1{font-family:var(--font-title);color:var(--gold);font-size:2em;margin-bottom:8px}
+   .cc-header p{color:var(--text-dim);font-style:italic}
+   .cc-section{background:var(--bg-panel);border:1px solid
+   var(--border);border-radius:var(--radius);padding:20px;margin-bottom:20px}
+   .cc-section h2{font-family:var(--font-title);color:var(--gold);font-size:1.2em;margin-bo
+   ttom:15px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+   .cc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px
+   }
+   .cc-option{background:var(--bg-card);border:2px solid
+   var(--border);border-radius:var(--radius);padding:12px;cursor:pointer;transition:all
+   .2s;text-align:center}
+   .cc-option:hover{border-color:var(--gold-dim);background:var(--bg-hover)}.cc-option.sele
+   cted{border-color:var(--gold);background:var(--bg-hover);box-shadow:0 0 15px
+   rgba(212,168,67,.15)}
+   .cc-option .name{font-family:var(--font-title);color:var(--gold);font-size:1em;margin-bo
+   ttom:4px}.cc-option
+   .desc{font-size:.82em;color:var(--text-dim);line-height:1.4}.cc-option
+   .traits{font-size:.78em;color:var(--blue-bright);margin-top:4px;font-style:italic}
+   .cc-abilities{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+   .cc-ability{background:var(--bg-card);border:1px solid
+   var(--border);border-radius:var(--radius);padding:12px;text-align:center}
+   .cc-ability .label{font-family:var(--font-title);color:var(--gold);font-size:.8em;text-t
+   ransform:uppercase;letter-spacing:1px}
+   .cc-ability .score{font-size:2.2em;color:var(--text-bright);font-weight:700;line-height:
+   1.2;margin:4px 0}
+   .cc-ability .mod{font-size:1.1em;color:var(--blue-bright)}.cc-ability
+   .racial{font-size:.75em;color:var(--green);margin-top:2px}
+   .cc-ability
+   .controls{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:8px}
+   .cc-ability .ctrl-btn{width:28px;height:28px;border-radius:50%;border:1px solid
+   var(--gold-dim);background:var(--bg-dark);color:var(--gold);cursor:pointer;font-size:1.1
+   em;display:flex;align-items:center;justify-content:center;line-height:1;transition:all
+   .2s}
+   .cc-ability
+   .ctrl-btn:hover{background:var(--gold-dim);color:var(--text-bright)}.cc-ability
+   .base-score{font-size:.9em;color:var(--text-dim);min-width:20px}
+   label{display:block;font-family:var(--font-title);color:var(--gold);font-size:.85em;marg
+   in-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+   input[type="text"],textarea,select{width:100%;padding:10px
+   12px;background:var(--bg-card);border:1px solid
+   var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body)
+   ;font-size:1em;outline:none;transition:border .2s}
+   input[type="text"]:focus,textarea:focus,select:focus{border-color:var(--gold)}
+   textarea{resize:vertical;min-height:80px;line-height:1.6}select{cursor:pointer;-webkit-a
+   ppearance:none}
+   .points-display{font-family:var(--font-title);color:var(--gold-bright);font-size:1.1em;t
+   ext-align:center;padding:10px;background:var(--bg-card);border-radius:var(--radius);marg
+   in-bottom:12px;border:1px solid var(--border-gold)}
+   .cc-preview{background:linear-gradient(135deg,var(--bg-card),var(--parchment));border:1p
+   x solid var(--gold-dim);border-radius:var(--radius);padding:20px;margin-top:20px}
+   .cc-preview
+   h3{font-family:var(--font-title);color:var(--gold);font-size:1.3em;margin-bottom:12px}
+   .preview-stat{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px
+    solid var(--border);font-size:.9em}
+   .preview-stat .val{color:var(--text-bright)}
+   #game-screen{display:none;height:100vh;flex-direction:column}
+   .game-header{background:var(--bg-panel);border-bottom:2px solid
+   var(--border-gold);padding:8px
+   16px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+   .game-header
+   .location-display{font-family:var(--font-title);color:var(--gold);font-size:.95em}
+   .game-header
+   .char-brief{color:var(--text-dim);font-size:.85em}.header-btns{display:flex;gap:6px}
+   .game-body{display:flex;flex:1;overflow:hidden}
+   .game-main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
+   .narrative-panel{flex:1;overflow-y:auto;padding:20px 25px;background:var(--bg-dark)}
+   .narrative-text{max-width:750px;margin:0 auto}
+   .narrative-text .entry{margin-bottom:16px;animation:fadeIn .4s ease}
+   .narrative-text .prose{color:var(--text);line-height:1.8;font-size:1.05em}
+   .narrative-text
+   .dialogue{color:var(--blue-bright);font-style:italic;padding-left:15px;border-left:2px
+   solid var(--blue-dim);line-height:1.7}
+   .narrative-text
+   .system{color:var(--text-dim);font-size:.9em;font-style:italic;padding:6px
+   12px;border-left:2px solid var(--border)}
+   .narrative-text .roll-result{background:var(--bg-panel);border:1px solid
+   var(--border);border-radius:var(--radius);padding:10px
+   14px;font-family:var(--font-title);color:var(--gold);font-size:.9em}
+   .narrative-text .combat-msg{color:var(--red);font-weight:600}.narrative-text
+   .success{color:var(--green)}.narrative-text .failure{color:var(--red)}
+   .narrative-text .loot{color:var(--gold-bright);font-style:italic}.narrative-text .xp-gai
+   n{color:var(--purple);font-family:var(--font-title);font-size:.9em;letter-spacing:1px}
+   .narrative-text .chapter{text-align:center;padding:20px 0;font-family:var(--font-title)}
+   @keyframes
+   fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+   .action-panel{background:var(--bg-panel);border-top:2px solid
+   var(--border-gold);padding:12px 20px;flex-shrink:0;min-height:70px}
+   .action-panel .actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-wi
+   dth:750px;margin:0 auto}
+   .game-sidebar{width:320px;background:var(--bg-panel);border-left:1px solid var(--border)
+   ;overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column;transition:all .3s}
+   .sidebar-tabs{display:flex;border-bottom:1px solid
+   var(--border);flex-shrink:0;background:var(--bg-dark)}
+   .sidebar-tab{flex:1;padding:10px 4px;text-align:center;font-family:var(--font-title);fon
+   t-size:.7em;color:var(--text-dim);cursor:pointer;border-bottom:2px solid
+   transparent;text-transform:uppercase;letter-spacing:.5px;transition:all .2s}
+   .sidebar-tab:hover{color:var(--text)}.sidebar-tab.active{color:var(--gold);border-bottom
+   -color:var(--gold);background:var(--bg-panel)}
+   .sidebar-content{flex:1;overflow-y:auto;padding:15px}.sidebar-panel{display:none}.sideba
+   r-panel.active{display:block}
+   .cs-name{font-family:var(--font-title);color:var(--gold);font-size:1.2em;margin-bottom:2
+   px}
+   .cs-info{color:var(--text-dim);font-size:.82em;margin-bottom:12px;font-style:italic}.cs-
+   hp{margin-bottom:15px}
+   .hp-bar{height:20px;background:var(--bg-dark);border-radius:10px;overflow:hidden;border:
+   1px solid var(--border);position:relative}
+   .hp-fill{height:100%;transition:width .3s;border-radius:10px}
+   .hp-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:v
+   ar(--font-title);font-size:.72em;color:var(--text-bright);text-shadow:0 1px 3px
+   #000;white-space:nowrap}
+   .cs-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:12px}
+   .cs-stat{background:var(--bg-card);border:1px solid
+   var(--border);border-radius:var(--radius);padding:7px;text-align:center}
+   .cs-stat .stat-name{font-family:var(--font-title);font-size:.6em;color:var(--gold);text-
+   transform:uppercase;letter-spacing:1px}
+   .cs-stat .stat-val{font-size:1.4em;color:var(--text-bright);font-weight:700;line-height:
+   1.2}.cs-stat .stat-mod{font-size:.8em;color:var(--blue-bright)}
+   .cs-section-title{font-family:var(--font-title);color:var(--gold);font-size:.82em;margin
+   :12px 0 6px;padding-bottom:4px;border-bottom:1px solid
+   var(--border);letter-spacing:1px;text-transform:uppercase}
+   .cs-detail{display:flex;justify-content:space-between;padding:3px
+   0;font-size:.85em;border-bottom:1px solid rgba(58,53,48,.3)}.cs-detail
+   .val{color:var(--text-bright)}
+   .spell-slot-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:.85e
+   m}
+   .spell-slot{width:18px;height:18px;border-radius:50%;border:2px solid
+   var(--purple);display:inline-flex;align-items:center;justify-content:center;font-size:.5
+   5em;cursor:default;transition:all .2s}
+   .spell-slot.used{background:var(--bg-dark);border-color:var(--purple-dim);opacity:.4}.sp
+   ell-slot.available{background:var(--purple);color:#fff}
+   .condition-tag{display:inline-block;padding:2px 7px;border-radius:10px;font-size:.72em;m
+   argin:2px;font-family:var(--font-title);text-transform:uppercase;letter-spacing:.5px}
+   .condition-tag.poisoned{background:#1a3d1a;color:#8fdf8f;border:1px solid
+   #2d5a2d}.condition-tag.frightened{background:#3d1a3d;color:#df8fdf;border:1px solid
+   #5a2d5a}
+   .condition-tag.restrained{background:#3d3d1a;color:#dfdf8f;border:1px solid
+   #5a5a2d}.condition-tag.stunned{background:#1a1a3d;color:#8f8fdf;border:1px solid
+   #2d2d5a}
+   .condition-tag.prone{background:#3d2a1a;color:#dfbf8f;border:1px solid
+   #5a3d2d}.condition-tag.paralyzed{background:#3d1a1a;color:#df8f8f;border:1px solid
+   #5a2d2d}
+   .inv-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r
+   adius);padding:10px;margin-bottom:6px;cursor:pointer;transition:all .2s}
+   .inv-item:hover{border-color:var(--gold-dim);background:var(--bg-hover)}.inv-item
+   .item-name{color:var(--text-bright);font-weight:600;margin-bottom:2px}
+   .inv-item .item-name.common{color:var(--text)}.inv-item
+   .item-name.uncommon{color:var(--green)}.inv-item
+   .item-name.rare{color:var(--blue-bright)}.inv-item
+   .item-name.very-rare{color:var(--purple)}.inv-item
+   .item-name.legendary{color:var(--gold-bright)}
+   .inv-item .item-desc{font-size:.83em;color:var(--text-dim);margin-top:2px;line-height:1.
+   4}.inv-item .item-type{font-size:.72em;color:var(--gold-dim);text-transform:uppercase;fo
+   nt-family:var(--font-title);letter-spacing:.5px;margin-bottom:2px}
+   .quest-entry{background:var(--bg-card);border:1px solid
+   var(--border);border-radius:var(--radius);padding:12px;margin-bottom:8px;transition:all
+   .2s}
+   .quest-entry.active{border-left:3px solid
+   var(--gold)}.quest-entry.completed{border-left:3px solid var(--green);opacity:.7}
+   .quest-entry .quest-name{font-family:var(--font-title);color:var(--gold);font-size:.9em;
+   margin-bottom:4px}
+   .quest-entry
+   .quest-desc{font-size:.82em;color:var(--text-dim);margin-bottom:6px;line-height:1.4}
+   .quest-entry .quest-stage{font-size:.8em;color:var(--blue-bright);padding:4px
+   8px;background:var(--bg-panel);border-radius:3px}
+   .dice-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(
+   0,0,0,.75);z-index:1000;align-items:center;justify-content:center}
+   .dice-overlay.show{display:flex}
+   .dice-box{background:linear-gradient(135deg,var(--bg-panel),var(--parchment));border:2px
+    solid var(--gold);border-radius:12px;padding:30px
+   50px;text-align:center;animation:diceAppear .3s ease;min-width:220px}
+   .dice-formula{font-family:var(--font-title);color:var(--text-dim);font-size:1em;margin-b
+   ottom:10px;letter-spacing:1px}
+   .dice-result{font-family:var(--font-title);font-size:3.5em;color:var(--gold-bright);text
+   -shadow:0 0 20px rgba(212,168,67,.4);line-height:1;margin:10px 0}
+   .dice-detail{font-size:.88em;color:var(--text-dim);margin-top:8px;font-style:italic}
+   .dice-result.crit{color:var(--gold-bright);animation:critPulse .4s ease
+   3}.dice-result.nat-fail{color:var(--red)}
+   @keyframes diceAppear{from{transform:scale(.4)
+   rotate(-15deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+   @keyframes critPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15);text-shadow:0
+   0 40px rgba(240,208,96,.8)}}
+   #combat-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgb
+   a(10,10,18,.97);z-index:500;flex-direction:column}
+   #combat-overlay.show{display:flex}
+   .combat-header{background:linear-gradient(90deg,var(--bg-panel),var(--red-dim),var(--bg-
+   panel));border-bottom:2px solid var(--red-dim);padding:10px
+   20px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+   .combat-header
+   h2{font-family:var(--font-title);color:var(--red);font-size:1.2em;letter-spacing:2px}.co
+   mbat-round-info{font-family:var(--font-title);color:var(--gold);font-size:.9em}
+   .combat-body{display:flex;flex:1;overflow:hidden}
+   .combat-field{flex:1;padding:20px;overflow-y:auto}
+   .combat-log-panel{width:280px;background:var(--bg-panel);border-left:1px solid
+   var(--border);overflow-y:auto;padding:10px;font-size:.82em;flex-shrink:0}
+   .combat-log-panel h3{font-family:var(--font-title);color:var(--red);font-size:.8em;margi
+   n-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+   .log-entry{padding:5px 0;border-bottom:1px solid
+   rgba(58,53,48,.4);line-height:1.4;color:var(--text-dim)}.log-entry
+   strong{font-weight:600}
+   .initiative-order{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;padding-bottom:
+   15px;border-bottom:1px solid var(--border)}
+   .init-token{background:var(--bg-card);border:2px solid
+   var(--border);border-radius:var(--radius);padding:8px
+   12px;text-align:center;min-width:90px;transition:all .3s}
+   .init-token.active{border-color:var(--gold);box-shadow:0 0 15px
+   rgba(212,168,67,.25);background:var(--bg-hover)}
+   .init-token.type-enemy{border-color:var(--red-dim)}.init-token.type-player{border-color:
+   var(--blue-dim)}.init-token.type-companion{border-color:var(--green-dim)}
+   .init-token .token-name{font-family:var(--font-title);font-size:.75em;color:var(--text-b
+   right);margin-bottom:2px}
+   .init-token .token-hp{font-size:.7em;color:var(--text-dim)}.init-token
+   .token-init{font-size:.65em;color:var(--gold-dim)}
+   .enemy-display{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));ga
+   p:10px;margin-bottom:20px}
+   .enemy-card{background:var(--bg-card);border:1px solid
+   var(--red-dim);border-radius:var(--radius);padding:14px;transition:all .3s}
+   .enemy-card.dead{opacity:.3;border-color:var(--border);filter:grayscale(1)}
+   .enemy-card .enemy-name{font-family:var(--font-title);color:var(--red);font-size:.95em;m
+   argin-bottom:4px}
+   .enemy-card .enemy-stats{font-size:.82em;color:var(--text-dim);margin-bottom:6px}
+   .enemy-card .enemy-desc{font-size:.8em;color:var(--text-dim);font-style:italic;line-heig
+   ht:1.4;margin-top:6px}
+   .combat-actions-bar{background:linear-gradient(180deg,var(--bg-panel),var(--bg-dark));bo
+   rder-top:2px solid var(--border);padding:12px
+   20px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;flex-shrink:0}
+   .combat-target-select{font-family:var(--font-body);padding:6px
+   10px;background:var(--bg-card);color:var(--text);border:1px solid
+   var(--border);border-radius:var(--radius);cursor:pointer;font-size:.9em}
+   .modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba
+   (0,0,0,.75);z-index:2000;align-items:center;justify-content:center}
+   .modal-overlay.show{display:flex}
+   .modal{background:linear-gradient(135deg,var(--bg-panel),var(--parchment));border:1px
+   solid var(--gold-dim);border-radius:var(--radius);padding:25px;max-width:480px;width:90%
+   ;max-height:80vh;overflow-y:auto;box-shadow:var(--shadow)}
+   .modal h2{font-family:var(--font-title);color:var(--gold);margin-bottom:12px;font-size:1
+   .2em}.modal p{color:var(--text);margin-bottom:15px;line-height:1.6}
+   .rest-options{display:flex;gap:10px;flex-wrap:wrap}
+   .spell-entry{background:var(--bg-card);border:1px solid
+   var(--border);border-radius:var(--radius);padding:10px;margin-bottom:6px}
+   .spell-entry .spell-name{font-family:var(--font-title);color:var(--purple);font-size:.92
+   em;margin-bottom:2px}
+   .spell-entry .spell-school{font-size:.72em;color:var(--text-dim);text-transform:uppercas
+   e;letter-spacing:.5px;margin-bottom:4px}
+   .spell-entry .spell-desc{font-size:.82em;color:var(--text-dim);line-height:1.4;margin-bo
+   ttom:4px}.spell-entry
+   .spell-meta{font-size:.75em;color:var(--gold-dim);font-style:italic}
+   .dialogue-box{background:linear-gradient(135deg,var(--bg-card),var(--parchment));border:
+   1px solid var(--border-gold);border-radius:var(--radius);padding:16px;margin:10px 0}
+   .dialogue-speaker-row{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+   .npc-portrait{width:56px;height:56px;border-radius:50%;border:2px solid
+   var(--gold-dim);background:var(--bg-dark);display:flex;align-items:center;justify-conten
+   t:center;font-size:1.8em;flex-shrink:0}
+   .dialogue-speaker-name{font-family:var(--font-title);color:var(--gold);font-size:.95em;m
+   argin-bottom:2px}.dialogue-speaker-info{font-size:.75em;color:var(--text-dim);font-style
+   :italic}
+   .dialogue-speech{color:var(--text);line-height:1.7;padding:10px 0;font-size:1em}
+   .dialogue-choices{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+   .dialogue-choice{background:var(--bg-panel);border:1px solid
+   var(--border);border-radius:var(--radius);padding:10px
+   14px;cursor:pointer;transition:all .2s;text-align:left;color:var(--text);font-family:var
+   (--font-body);font-size:.95em;width:100%}
+   .dialogue-choice:hover{border-color:var(--gold);background:var(--bg-hover);color:var(--g
+   old-bright);transform:translateX(3px)}
+   .dialogue-choice .skill-tag{font-size:.72em;color:var(--purple);text-transform:uppercase
+   ;font-family:var(--font-title);margin-right:5px;letter-spacing:.5px;padding:1px
+   5px;background:var(--purple-dim);border-radius:3px}
+   .morality-bar{height:8px;background:linear-gradient(90deg,#8b0000,#666,#1a5c2a);border-r
+   adius:4px;position:relative;margin:6px 0;border:1px solid var(--border)}
+   .morality-marker{position:absolute;top:-5px;width:16px;height:16px;background:var(--gold
+   );border-radius:50%;border:2px solid
+   var(--text-bright);transform:translateX(-50%);transition:left .5s;box-shadow:0 0 8px
+   rgba(212,168,67,.5)}
+   .death-saves-display{display:flex;gap:20px;justify-content:center;margin:8px 0}
+   .ds-group{display:flex;align-items:center;gap:4px;font-size:.8em}
+   .ds-pip{width:14px;height:14px;border-radius:50%;border:2px solid
+   var(--border);display:inline-block}
+   .ds-pip.success{background:var(--green);border-color:var(--green)}.ds-pip.failure{backgr
+   ound:var(--red);border-color:var(--red)}
+   .shop-item{background:var(--bg-card);border:1px solid
+   var(--border);border-radius:var(--radius);padding:10px;margin-bottom:8px;display:flex;ju
+   stify-content:space-between;align-items:center}
+   .shop-item .item-info
+   .name{color:var(--text-bright);font-weight:600;font-size:.95em}.shop-item .item-info
+   .desc{color:var(--text-dim);font-size:.82em;margin-top:2px}
+   .shop-item .cost{font-family:var(--font-title);color:var(--gold);font-size:.9em;white-sp
+   ace:nowrap;margin-left:10px}
+   .faction-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:.72em;f
+   ont-family:var(--font-title);text-transform:uppercase;letter-spacing:.5px}
+   .faction-badge.harpers{background:#1a2a3a;color:#6ab4ff;border:1px solid
+   #2a4a6a}.faction-badge.zhentarim{background:#2a1a1a;color:#ff9a6a;border:1px solid
+   #5a2a2a}
+   .faction-badge.lords{background:#2a2a1a;color:#ffe06a;border:1px solid
+   #5a5a2a}.faction-badge.enclave{background:#1a2a1a;color:#6aff9a;border:1px solid
+   #2a5a2a}.faction-badge.gauntlet{background:#2a1a2a;color:#ff6adf;border:1px solid
+   #5a2a5a}
+   @media(max-width:768px){.game-sidebar{position:fixed;right:-320px;top:0;bottom:0;z-index
+   :400;transition:right .3s;box-shadow:var(--shadow)}.game-sidebar.open{right:0}.title-mai
+   n{font-size:2.2em}.cc-abilities{grid-template-columns:repeat(2,1fr)}.cc-grid{grid-templa
+   te-columns:repeat(2,1fr)}.combat-log-panel{display:none}}
+   </style>
+   "@
+   $css | Out-File -FilePath 'C:\swordcoast.html' -Encoding UTF8 -Append
+   Write-Host "CSS done"
+   PSEOF
+   echo "Script created"
+   Create PowerShell script for CSS section
+
+ Command contains a quoted newline followed by a #-prefixed line, which can hide arguments
+ from line-based permission checks
+
+ Do you want to proceed?
+ > 1. Yes
+   2. No
+
+ Esc to cancel · Tab to amend · ctrl+e to explain
+
+╭─── Claude Code v2.1.70 ────────────────────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting started              │
+│                Welcome back Joshua!                │ Run /init to create a CLAUDE.md file… │
+│                                                    │ ───────────────────────────────────── │
+│                                                    │ Recent activity                       │
+│                       ▐▛███▜▌                      │ No recent activity                    │
+│                      ▝▜█████▛▘                     │                                       │
+│                        ▘▘ ▝▝                       │                                       │
+│  Sonnet 4.6 · Claude Pro · jar32798@gmail.com's    │                                       │
+│  Organization                                      │                                       │
+│ C:\Users\joshu_w0zb8cp\OneDrive - Dubbo Christian… │                                       │
+╰────────────────────────────────────────────────────────────────────────────────────────────╯
+
+  ✻ Voice mode is now available · /voice to enable
+
+> hello
+
+● Hey. What you need?
+
+> look for DNDGAME.txt
+
+● Searched for 1 pattern (ctrl+o to expand)
+
+● Timeout — too many files to scan from root. Give me more specific folder to search in, or
+  know approximate location?
+
+✻ Worked for 31s
+
+> It is here C:\DNDGAME.txt
+
+● Read 1 file (ctrl+o to expand)
+
+● Found it. Partial DND 5e game built as single HTML file — "Chronicles of the Sword Coast."
+
+  File notes:
+  - Has CSS, character creation, combat engine, spells DB, NPC/quest data, dialogue trees for
+  4 NPCs
+  - Missing: Whisper, Neverember, Vexira, Tormund, Miri NPCs; location encounters; crafting
+  system; final boss
+
+  What you want to do with it?
+
+> make it playable
+
+● Need to read full file first.
+
+● Read 1 file (ctrl+o to expand)
+
+● File is 294 lines, cut off mid-tag. Need to build the complete game from scratch using the
+  existing CSS. Writing full swordcoast.html now — this is large.
+
+● Agent(Write complete DND browser game HTML)
+  ⎿  Bash(cat > /tmp/write_css.ps1 << 'PSEOF'
+         $css = @"…)
+     Running…
+     Bash(python3 -c "print('hello')" 2>/dev/null || python -c "print('hello')")
+     Running…
+     Bash(python3 /tmp/build_game.py 2>&1 | tail -5; echo "exit: $?")
+     Running…
+     +11 more tool uses (ctrl+o to expand)
+     ctrl+b to run in background
+
+✢ Pollinating… (55m 22s · ↓ 40.4k tokens)
+  ⎿  Tip: Use /btw to ask a quick side question without interrupting Claude's current work
+
+──────────────────────────────────────────────────────────────────────────────────────── ▪▪▪ ─
+> 
+
+
+──────────────────────────────────────────────────────────────────────────────────────────────
+  ⏵⏵ accept edits on · 2 bashes                                        Now using extra usage
+                                  Update available! Run: winget upgrade Anthropic.ClaudeCode
+                                                                                              

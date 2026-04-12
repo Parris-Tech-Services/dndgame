@@ -1,0 +1,21 @@
+{
+  "name": "dndgame",
+  "version": "1.0.0",
+  "description": "A modular browser RPG rebuilt from a truncated legacy snapshot.",
+  "main": "playwright.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "npx playwright test",
+    "test:e2e": "npx playwright test tests/smoke.spec.js",
+    "test:e2e:headed": "npx playwright test tests/smoke.spec.js --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1"
+  }
+}
