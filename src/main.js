@@ -149,7 +149,17 @@ function bindStaticEvents() {
     setSidebarTab(tab.dataset.tab);
   });
 
+  document.querySelectorAll(".fullscreen-btn").forEach((button) => {
+    button.addEventListener("click", toggleFullscreen);
+  });
+
   document.addEventListener("keydown", (event) => {
+    if (event.key.toLowerCase() === "f" && !event.ctrlKey && !event.metaKey && !event.altKey) {
+      event.preventDefault();
+      toggleFullscreen();
+      return;
+    }
+
     if (event.key === "s" && state) {
       event.preventDefault();
       manualSave();
@@ -176,6 +186,54 @@ function bindStaticEvents() {
         handleAction(actionButtons[index].dataset.actionId);
       }
     }
+  });
+}
+
+function toggleFullscreen() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen?.();
+    return;
+  }
+  document.documentElement.requestFullscreen?.();
+}
+
+function renderGameToText() {
+  const visibleScreen = ["title-screen", "char-creation", "game-screen"]
+    .find((id) => getComputedStyle(document.getElementById(id)).display !== "none") || "unknown";
+  const location = state ? locationLookup[state.world.locationId] : null;
+  return JSON.stringify({
+    coordinateSystem: "Menu-driven RPG; numbered actions map to the visible action list from top to bottom.",
+    screen: visibleScreen,
+    player: state ? {
+      name: state.player.name,
+      raceId: state.player.raceId,
+      classId: state.player.classId,
+      backgroundId: state.player.backgroundId,
+      level: state.player.level,
+      hp: state.player.hp,
+      maxHp: state.player.maxHp,
+      gold: state.player.gold,
+      spellSlots: state.player.spellSlots,
+      inventory: state.player.inventory
+    } : null,
+    world: state ? {
+      day: state.world.day,
+      locationId: state.world.locationId,
+      locationName: location?.name || null,
+      ending: state.world.ending,
+      activeQuests: state.quests.active,
+      completedQuests: state.quests.completed
+    } : null,
+    combat: state?.combat ? {
+      enemy: {
+        name: state.combat.enemy.name,
+        hp: state.combat.enemy.hp,
+        maxHp: state.combat.enemy.maxHp
+      }
+    } : null,
+    visibleActions: Array.from(document.querySelectorAll("#actions button[data-action-id]"))
+      .filter((button) => !button.disabled)
+      .map((button) => ({ id: button.dataset.actionId, label: button.textContent.trim() }))
   });
 }
 
@@ -1487,3 +1545,9 @@ function toLookup(list) {
     return acc;
   }, {});
 }
+
+window.render_game_to_text = renderGameToText;
+window.advanceTime = () => {
+  if (state) renderGame();
+  return renderGameToText();
+};

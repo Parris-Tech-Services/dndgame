@@ -87,6 +87,22 @@ test("save and load restores the journey state", async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
+test("runtime state hook exposes the current choices", async ({ page }) => {
+  await installDeterministicDice(page);
+  const errors = trackRuntimeErrors(page);
+
+  await startNewGame(page, "State Reader");
+
+  const summary = JSON.parse(await page.evaluate(() => window.render_game_to_text()));
+  expect(summary.player.name).toBe("State Reader");
+  expect(summary.world.locationId).toBe("protector_enclave");
+  expect(summary.visibleActions.map((action) => action.label)).toContain("Talk: Captain Serra");
+
+  const advanced = JSON.parse(await page.evaluate(() => window.advanceTime(1000)));
+  expect(advanced.world.day).toBe(summary.world.day);
+  expect(errors).toEqual([]);
+});
+
 test("ambient exploration actions and scene art render on the main screen", async ({ page }) => {
   await installDeterministicDice(page);
   const errors = trackRuntimeErrors(page);

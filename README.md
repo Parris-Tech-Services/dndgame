@@ -14,6 +14,13 @@ A modular browser RPG rebuilt from a truncated legacy snapshot.
 - Run smoke suite: `npm run test:e2e`
 - Run all Playwright tests: `npm test`
 
+## Player and test controls
+
+- Press `F` or use a Fullscreen button to toggle fullscreen.
+- Press `S` to save, `R` to rest outside combat, `L` to load from the title, and `1`-`9` to choose visible actions.
+- `window.render_game_to_text()` returns a concise JSON summary of the current screen, player, world, combat, and visible choices.
+- `window.advanceTime(ms)` deterministically refreshes the turn-based view and returns the same summary.
+
 ## Project structure
 - `index.html`: app shell and UI containers.
 - `styles/main.css`: core styling (recovered + patch updates).
@@ -51,6 +58,5 @@ Add or edit content in `src/data/*`:
 - Death/recovery path
 
 ## Known limitations
-- No automated browser test harness yet.
 - Encounter and dialogue depth is intentionally compact for this checkpoint.
 - Balance tuning is baseline only and may need iteration.
