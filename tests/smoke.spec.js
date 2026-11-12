@@ -145,7 +145,7 @@ test("full adventure path reaches the victory ending", async ({ page }) => {
   await expect(page.locator("#narrative")).toContainText("Loot: Tidal Sigil.");
 
   await clickAction(page, "Travel: Dockward");
-  await clickAction(page, "Talk: Kael Quickstep");
+  await clickAction(page, "Talk: Fethe Quickstep");
   await expect(page.locator("#narrative")).toContainText("intel payment arrives");
 
   await clickAction(page, "Travel: Protector's Enclave");
