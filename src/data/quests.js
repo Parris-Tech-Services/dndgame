@@ -18,7 +18,7 @@
     stages: [
       "Get intel from Tormund.",
       "Clear Sunken Pier cache.",
-      "Report to Whisper or Kael for reward."
+      "Report to Whisper or Fethe for reward."
     ]
   }
 };

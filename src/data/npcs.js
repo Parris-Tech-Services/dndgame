@@ -25,7 +25,7 @@
   },
   {
     id: "kael",
-    name: "Kael Quickstep",
+    name: "Fethe Quickstep",
     locationId: "dockward",
     faction: "harpers",
     greeting: "I hear things before they happen. Usually.",

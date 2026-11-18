@@ -1518,7 +1518,7 @@ function getSmugglerQuestText() {
     return "Defeat the smuggler cell at Sunken Pier.";
   }
 
-  return "Collect your reward from Whisper or Kael.";
+  return "Collect your reward from Whisper or Fethe.";
 }
 
 function gameMessage(text, type, includeInLog) {
